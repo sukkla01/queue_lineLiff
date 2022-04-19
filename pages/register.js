@@ -22,7 +22,7 @@ const Register = () => {
             const profile = await liff.getProfile()
             setProfile(profile)
         }
-        getData()
+        // getData()
     })
 
 
@@ -48,7 +48,7 @@ const Register = () => {
             <NavHeader />
 
             <div id="wrap">
-                <div className='text-center' style={{ marginTop: 100 }}>
+                <div className='text-center' style={{ marginTop: 0 }}>
                     <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร</h4>
                 </div>
 
