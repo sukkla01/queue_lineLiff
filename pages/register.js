@@ -25,7 +25,7 @@ const Register = () => {
         const res =  await initLiff()
         const dataRes = JSON.stringify(res);
         const dataRes2 = JSON.parse(dataRes)
-        // setProfile(dataRes)
+        setProfile(dataRes2)
         alert(dataRes)
         alert(dataRes2)
         let data = {
