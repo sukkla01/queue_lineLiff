@@ -41,7 +41,7 @@ const Register = () => {
 
                 <form>
                     <div style={{ paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
-                        <img src={pictureUrl} width={100} height={100} style={{ borderRadius: '50%' }} />
+                        <img src={profile.pictureUrl} width={100} height={100} style={{ borderRadius: '50%' }} />
                         <div className="form-group" style={{ marginTop: 30 }}>
                             <input type="text" value={formData.cid} name='cid' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="เลขบัตรประจำตัวประชาชน"
                                 // onChange={e => {
