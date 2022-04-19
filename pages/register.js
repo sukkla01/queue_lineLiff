@@ -22,7 +22,7 @@ const Register = () => {
 
     const submit = async() => {
         // e.preventDefault()
-        const res =  await ainitLiff()
+        const res =  await initLiff()
         const dataRes = await res.json();
         alert(dataRes)
         let data = {
