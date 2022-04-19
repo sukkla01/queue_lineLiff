@@ -16,17 +16,17 @@ const Register = () => {
     useEffect(() => {
         console.log('1234')
         localStorage.setItem('path', 'register');
+        const res =  await initLiff()
+        const dataRes = JSON.stringify(res);
+        const dataRes2 = JSON.parse(dataRes)
+        setProfile(dataRes2)
         // setProfile(initLiff)
     })
 
 
     const submit = async() => {
         // e.preventDefault()
-        const res =  await initLiff()
-        const dataRes = JSON.stringify(res);
-        const dataRes2 = JSON.parse(dataRes)
-        setProfile(dataRes2)
-        alert(dataRes2)
+        
         let data = {
             cid : formData.cid,
             tel : formData.tel,
