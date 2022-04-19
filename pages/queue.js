@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import { useRouter } from 'next/router'
+import { initLiff } from '../component/initLiff'
+
+
 
 
 const Queue = (value) => {
@@ -9,12 +12,7 @@ const Queue = (value) => {
   useEffect(() => {
     console.log('1234')
     localStorage.setItem('path', 'queue');
-    async function getData() {
-      const liff = (await import('@line/liff')).default
-      await liff.ready
-      const profile = await liff.getProfile()
-      setProfile(profile)
-    }
+    setProfile(initLiff)
     // getData()
   })
 

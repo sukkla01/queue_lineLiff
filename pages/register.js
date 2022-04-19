@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader';
 import { Button, Radio } from 'antd';
 import { useRouter } from 'next/router'
+import { initLiff } from '../component/initLiff'
 
 const Register = () => {
     const router = useRouter()
@@ -16,13 +17,7 @@ const Register = () => {
     useEffect(() => {
         console.log('1234')
         localStorage.setItem('path', 'register');
-        async function getData() {
-            const liff = (await import('@line/liff')).default
-            await liff.ready
-            const profile = await liff.getProfile()
-            setProfile(profile)
-        }
-        // getData()
+        setProfile(initLiff)
     })
 
 
