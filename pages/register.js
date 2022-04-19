@@ -22,11 +22,7 @@ const Register = () => {
             const profile = await liff.getProfile()
             setProfile(profile)
         }
-
-
-
-
-        // getData()
+        getData()
     })
 
 
@@ -49,20 +45,20 @@ const Register = () => {
                         <img src={profile.pictureUrl} width={100} height={100} style={{ borderRadius: '50%' }} />
                         <div className="form-group" style={{ marginTop: 30 }}>
                             <input type="text" value={formData.cid} name='cid' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="เลขบัตรประจำตัวประชาชน"
-                                // onChange={e => {
-                                //     // setIsCode(false)
-                                //     setFormData({ ...formData, cid: e.target.value })
-                                //     setUAlertm('')
-                                // }}
+                                onChange={e => {
+                                    // setIsCode(false)
+                                    setFormData({ ...formData, cid: e.target.value })
+                                    setAlertm('')
+                                }}
                             />
                         </div>
                         <div className="form-group" style={{ marginTop: 30 }}>
                             <input type="text" value={formData.tel} name='tel' className="form-control" id="exampleInputPassword1" placeholder="เบอร์โทร"
-                                // onChange={e => {
-                                //     // setIsCode(false)
-                                //     setFormData({ ...formData, tel: e.target.value })
-                                //     setUAlertm('')
-                                // }}
+                                onChange={e => {
+                                    // setIsCode(false)
+                                    setFormData({ ...formData, tel: e.target.value })
+                                    setAlertm('')
+                                }}
 
                             />
                         </div>
