@@ -25,7 +25,7 @@ const Register = () => {
 
     return (
         <div style={{ textAlign: "center" }}>
-            <NavHeader />
+            {/* <NavHeader /> */}
 
             <div>
                 {count == 1 ? <button onClick={() => setCount(count + 1)}>Click me</button> : ''}
