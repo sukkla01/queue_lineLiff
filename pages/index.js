@@ -11,15 +11,17 @@ export default function Home() {
   useEffect(() => {
 
     let path = localStorage.getItem('path')
-    if (path == 'test') {
-      router.push('/test')
-    }
-    else if (path == 'myprofile') {
-      router.push('/myprofile')
-    }
-    else {
-      router.push('/')
-    }
+    router.push(`/${path}`)
+
+    // if (path == 'test') {
+    //   router.push(`/test`)
+    // }
+    // else if (path == 'myprofile') {
+    //   router.push('/myprofile')
+    // }
+    // else {
+    //   router.push('/')
+    // }
   }, [])
   return (
     <div>
