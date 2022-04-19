@@ -26,12 +26,12 @@ const Register = () => {
 
 
 
-        getData()
+        // getData()
     })
 
 
     const submit = () => {
-        e.preventDefault()
+        // e.preventDefault()
         router.push('/success')
     }
 
