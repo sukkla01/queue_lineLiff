@@ -5,7 +5,7 @@ const NavHeader = () => {
         <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
             <div className='text-center' >
                 <img src='../images/logo.png' width={30} height={30} style={{ marginRight: 10 }} />
-                <a className="navbar-brand" href="#">รพ.ศรัสัชนาลัย</a>
+                <a className="navbar-brand" href="#">รพ.ศรีสังวรสุโขทัย</a>
             </div>
         </nav>
     )
