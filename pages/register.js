@@ -32,8 +32,8 @@ const Register = () => {
         let data = {
             cid : formData.cid,
             tel : formData.tel,
-            userId : userId,
-            line_name : displayName
+            userId : profile.userId,
+            line_name : profile.displayName
         }
         if (formData.cid == '' || formData.tel == '') {
             setUAlertm('กรุณากรอกข้อมูลให้ครบ')
