@@ -36,7 +36,7 @@ const Register = () => {
 
             <div id="wrap">
                 <div className='text-center' style={{ marginTop: 100 }}>
-                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร {userId}</h4>
+                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร {profile.userId}</h4>
                 </div>
 
                 <form>
