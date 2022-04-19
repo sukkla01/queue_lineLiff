@@ -22,8 +22,9 @@ const Register = () => {
 
     const submit = () => {
         // e.preventDefault()
-        let aa = initLiff()
-        alert(aa)
+        const res = initLiff()
+        const data = await res.json();
+        alert(data)
         let data = {
             cid : formData.cid,
             tel : formData.tel,
