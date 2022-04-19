@@ -19,7 +19,7 @@ const Success = () => {
             </div>
             <div id="footer" >
                 <div style={{ paddingLeft: 15, paddingRight: 15,marginTop : 50 }}>
-                    <Button type="primary" shape="round" block size={'large'}  >
+                    <Button type="primary" shape="round" block size={'large'}  onClick={closeWindow} >
                         ปิด
                     </Button>
                 </div>
