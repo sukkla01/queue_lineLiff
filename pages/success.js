@@ -4,16 +4,16 @@ import { Button, Radio } from 'antd';
 
 const Success = () => {
 
-    const [alertM, setUAlertm] = useState("x");
+    const [alertM, setAlertm] = useState("x");
 
     const closeWindows = async ()=>{
-        setUAlertm('gggg')
+        setAlertm('gggg')
 
         const liff = (await import('@line/liff')).default
-        setUAlertm('vvvv')
+        setAlertm('vvvv')
         await liff.ready
         liff.closeWindow()
-        setUAlertm('zzzz')
+        setAlertm('zzzz')
     }
     return (
         <div>
