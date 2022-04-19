@@ -23,8 +23,8 @@ const Register = () => {
     const submit = async() => {
         // e.preventDefault()
         const res =  await ainitLiff()
-        const data = await res.json();
-        alert(data)
+        const dataRes = await res.json();
+        alert(dataRes)
         let data = {
             cid : formData.cid,
             tel : formData.tel,
