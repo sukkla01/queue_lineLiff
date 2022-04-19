@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import { Button, Radio } from 'antd';
 
