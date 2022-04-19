@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader';
-import { Alert, Button, Radio } from 'antd';
+import { Button, Radio } from 'antd';
 import { useRouter } from 'next/router'
 import { initLiff } from '../component/initLiff'
+
 const Register = () => {
     const router = useRouter()
     const [count, setCount] = useState(0)
@@ -16,17 +17,19 @@ const Register = () => {
     useEffect(() => {
         console.log('1234')
         localStorage.setItem('path', 'register');
-        const res =   initLiff()
-        const dataRes = JSON.stringify(res);
-        const dataRes2 = JSON.parse(dataRes)
-        setProfile(dataRes2)
-        // setProfile(initLiff)
+        async function getData() {
+            const liff = (await import('@line/liff')).default
+            await liff.ready
+            const profile = await liff.getProfile()
+            setProfile(profile)
+        }
+        getData()
     })
 
 
-    const submit = async() => {
+    const submit = () => {
         // e.preventDefault()
-        
+
         let data = {
             cid : formData.cid,
             tel : formData.tel,
@@ -47,7 +50,7 @@ const Register = () => {
 
             <div id="wrap">
                 <div className='text-center' style={{ marginTop: 0 }}>
-                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร </h4>
+                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร</h4>
                 </div>
 
                 <form>
@@ -81,7 +84,7 @@ const Register = () => {
                 <img src='../images/3.png' />
             </div>
             <div id="footer" >
-                <div >
+                <div style={{ paddingLeft : 15,paddingRight : 15  }}>
                 <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
                     สมัครเข้าใช้งาน
                 </Button>
