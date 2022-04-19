@@ -22,6 +22,9 @@ const Register = () => {
             setProfile(profile)
         }
 
+
+
+
         getData()
     })
 
@@ -36,7 +39,7 @@ const Register = () => {
 
             <div id="wrap">
                 <div className='text-center' style={{ marginTop: 100 }}>
-                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร {profile.userId}</h4>
+                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร</h4>
                 </div>
 
                 <form>
@@ -70,9 +73,12 @@ const Register = () => {
                 <img src='../images/3.png' />
             </div>
             <div id="footer" >
+                <div style={{ paddingLeft : 15,paddingRight : 15  }}>
                 <Button type="primary" shape="round" block size={'large'} onClick={submit} >
                     สมัครเข้าใช้งาน
                 </Button>
+                </div>
+                
                 {/* <Button type="primary" shape="round" block size={'large'} onClick={logout} >
         logout
     </Button> */}
