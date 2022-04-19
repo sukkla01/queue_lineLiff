@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useEffect } from 'react'
+import 'antd/dist/antd.css';
 
 const liffId = process.env.NEXT_PUBLIC_LIFF_ID
 
