@@ -17,7 +17,7 @@ const Register = () => {
     useEffect(() => {
         console.log('1234')
         localStorage.setItem('path', 'register');
-        setProfile(initLiff)
+        // setProfile(initLiff)
     })
 
 
@@ -44,7 +44,7 @@ const Register = () => {
 
             <div id="wrap">
                 <div className='text-center' style={{ marginTop: 0 }}>
-                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร</h4>
+                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร {initLiff}</h4>
                 </div>
 
                 <form>
