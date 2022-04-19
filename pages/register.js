@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader';
 import { Button, Radio } from 'antd';
-
+import { useRouter } from 'next/router'
 
 const Register = () => {
+    const router = useRouter()
     const [count, setCount] = useState(0)
     const [profile, setProfile] = useState({})
     const [alertM, setUAlertm] = useState("");
@@ -30,7 +31,8 @@ const Register = () => {
 
 
     const submit = () => {
-
+        e.preventDefault()
+        router.push('/success')
     }
 
     return (
