@@ -84,7 +84,7 @@ const Register = () => {
                 <img src='../images/3.png' />
             </div>
             <div id="footer" >
-                <div style={{ paddingLeft : 15,paddingRight : 15  }}>
+                <div >
                 <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
                     สมัครเข้าใช้งาน
                 </Button>
