@@ -20,9 +20,9 @@ const Register = () => {
     })
 
 
-    const submit = () => {
+    const submit = async() => {
         // e.preventDefault()
-        const res = initLiff()
+        const res =  await ainitLiff()
         const data = await res.json();
         alert(data)
         let data = {
