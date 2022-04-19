@@ -23,7 +23,7 @@ const Register = () => {
     const submit = async() => {
         // e.preventDefault()
         const res =  await initLiff()
-        const dataRes = await res.json();
+        const dataRes = JSON.stringify(res);
         alert(dataRes)
         let data = {
             cid : formData.cid,
