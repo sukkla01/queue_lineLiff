@@ -23,9 +23,11 @@ const Register = () => {
     const submit = async() => {
         // e.preventDefault()
         const res =  await initLiff()
-        const dataRes = JSON.parse(res);
-        setProfile(dataRes)
+        const dataRes = JSON.stringify(res);
+        const dataRes2 = JSON.parse(dataRes)
+        // setProfile(dataRes)
         alert(dataRes)
+        alert(dataRes2)
         let data = {
             cid : formData.cid,
             tel : formData.tel,
