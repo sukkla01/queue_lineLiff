@@ -28,7 +28,19 @@ const Register = () => {
 
     const submit = () => {
         // e.preventDefault()
-        router.push('/success')
+
+        let data = {
+            cid : formData.cid,
+            tel : formData.tel,
+            userId : userId,
+            line_name : displayName
+        }
+        if (formData.cid == '' || formData.tel == '') {
+            setUAlertm('กรุณากรอกข้อมูลให้ครบ')
+        }else{
+            router.push('/success')
+
+        }
     }
 
     return (
@@ -72,7 +84,7 @@ const Register = () => {
             </div>
             <div id="footer" >
                 <div style={{ paddingLeft : 15,paddingRight : 15  }}>
-                <Button type="primary" shape="round" block size={'large'} onClick={submit} >
+                <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
                     สมัครเข้าใช้งาน
                 </Button>
                 </div>
