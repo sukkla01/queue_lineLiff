@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader';
-import { Button, Radio } from 'antd';
+import { Alert, Button, Radio } from 'antd';
 import { useRouter } from 'next/router'
 import { initLiff } from '../component/initLiff'
-
 const Register = () => {
     const router = useRouter()
     const [count, setCount] = useState(0)
@@ -17,13 +16,14 @@ const Register = () => {
     useEffect(() => {
         console.log('1234')
         localStorage.setItem('path', 'register');
-        setProfile(initLiff())
+        // setProfile(initLiff)
     })
 
 
     const submit = () => {
         // e.preventDefault()
-alert(initLiff())
+        let aa = initLiff()
+        alert(aa)
         let data = {
             cid : formData.cid,
             tel : formData.tel,
@@ -44,7 +44,7 @@ alert(initLiff())
 
             <div id="wrap">
                 <div className='text-center' style={{ marginTop: 0 }}>
-                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร {initLiff()}</h4>
+                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร </h4>
                 </div>
 
                 <form>
