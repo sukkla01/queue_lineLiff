@@ -16,7 +16,7 @@ const Register = () => {
     useEffect(() => {
         console.log('1234')
         localStorage.setItem('path', 'register');
-        const res =  await initLiff()
+        const res =   initLiff()
         const dataRes = JSON.stringify(res);
         const dataRes2 = JSON.parse(dataRes)
         setProfile(dataRes2)
