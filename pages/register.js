@@ -19,8 +19,6 @@ const Register = () => {
             tel: ''
         })
     useEffect(() => {
-        getCid('xxxx')
-        console.log('1234')
         localStorage.setItem('path', 'register');
         async function getData() {
             const liff = (await import('@line/liff')).default
@@ -28,7 +26,7 @@ const Register = () => {
             const profile = await liff.getProfile()
             setProfile(profile)
             getCid(profile.userId)
-            
+
         }
         getData()
     })
@@ -90,7 +88,7 @@ const Register = () => {
                                 onChange={e => {
                                     // setIsCode(false)
                                     setFormData({ ...formData, cid: e.target.value })
-                                    setAlertm('')
+                                    setUAlertm('')
                                 }}
                             />
                         </div>
@@ -99,7 +97,7 @@ const Register = () => {
                                 onChange={e => {
                                     // setIsCode(false)
                                     setFormData({ ...formData, tel: e.target.value })
-                                    setAlertm('')
+                                    setUAlertm('')
                                 }}
 
                             />
