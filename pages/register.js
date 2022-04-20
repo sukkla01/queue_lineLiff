@@ -2,19 +2,24 @@ import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader';
 import { Button, Radio } from 'antd';
 import { useRouter } from 'next/router'
-import { initLiff } from '../component/initLiff'
+import axios from 'axios'
+import config from '../config'
+
+const BASE_URL = config.BASE_URL
 
 const Register = () => {
     const router = useRouter()
     const [count, setCount] = useState(0)
     const [profile, setProfile] = useState({})
     const [alertM, setUAlertm] = useState("");
+    const [status, setStatus] = useState("N");
     const [formData, setFormData] = useState(
         {
             cid: '',
             tel: ''
         })
     useEffect(() => {
+        getCid('xxxx')
         console.log('1234')
         localStorage.setItem('path', 'register');
         async function getData() {
@@ -22,24 +27,47 @@ const Register = () => {
             await liff.ready
             const profile = await liff.getProfile()
             setProfile(profile)
+            getCid(profile.userId)
         }
-        getData()
+        // getData()
     })
 
 
-    const submit = () => {
+
+    const getCid = async (userId) => {
+        try {
+            let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
+            console.log(res.data)
+            if (res.data.status == 'ok') {
+                setStatus(true)
+            } else {
+                console.log('error')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    const submit = async () => {
         // e.preventDefault()
 
         let data = {
-            cid : formData.cid,
-            tel : formData.tel,
-            userId : profile.userId,
-            line_name : profile.displayName
+            cid: formData.cid,
+            tel: formData.tel,
+            userId: profile.userId,
+            line_name: profile.displayName
         }
         if (formData.cid == '' || formData.tel == '') {
             setUAlertm('กรุณากรอกข้อมูลให้ครบ')
-        }else{
-            router.push('/success')
+        } else {
+            try {
+                let res = await axios.post(`${BASE_URL}/add-register`, data)
+                console.log(res.data)
+                router.push('/success')
+            } catch (error) {
+                console.log(error)
+            }
 
         }
     }
@@ -85,11 +113,11 @@ const Register = () => {
             </div>
             <div id="footer" >
                 <div >
-                <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
-                    สมัครเข้าใช้งาน
-                </Button>
+                    <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
+                        สมัครเข้าใช้งาน
+                    </Button>
                 </div>
-                
+
                 {/* <Button type="primary" shape="round" block size={'large'} onClick={logout} >
         logout
     </Button> */}
