@@ -1,6 +1,6 @@
 const config = {
     font: 'Kanit',
-    BASE_URL: 'http://110.49.126.23:4999',}
+    BASE_URL: 'https://api-queue-ss.diligentsoftinter.com',}
 
 
 
