@@ -29,7 +29,7 @@ const Register = () => {
             setProfile(profile)
             getCid(profile.userId)
         }
-        // getData()
+        getData()
     })
 
 
