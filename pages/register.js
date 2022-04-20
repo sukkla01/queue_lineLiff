@@ -65,7 +65,7 @@ const Register = () => {
                 console.log(res.data)
                 router.push('/success')
             } catch (error) {
-                console.log(error)
+                alert(error)
             }
 
         }
