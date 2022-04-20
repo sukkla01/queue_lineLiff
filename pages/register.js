@@ -28,6 +28,7 @@ const Register = () => {
             const profile = await liff.getProfile()
             setProfile(profile)
             getCid(profile.userId)
+            
         }
         getData()
     })
