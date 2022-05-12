@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import { useRouter } from 'next/router'
+import ProfilePage from '../component/ProfilePage'
 
 
 const Queue = (value) => {
@@ -29,7 +30,9 @@ const Queue = (value) => {
   return (
     <div>
       <NavHeader />
-      <div className='text-center' style={{ marginTop: 100 }}>
+
+      <div className='text-center' style={{ paddingTop: '20%' }}>
+        <ProfilePage />
         <h3 style={{ color: '#3f51b5' }}>เลือกแผนกจองคิว</h3>
         <div className="card green" style={{ marginTop: 50 }} onClick={() => onDep(1)}>
           <h1>แพทย์แผนไทย</h1>

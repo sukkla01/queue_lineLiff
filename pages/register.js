@@ -28,7 +28,7 @@ const Register = () => {
             getCid(profile.userId)
 
         }
-        getData()
+        // getData()
     })
 
 
@@ -56,9 +56,9 @@ const Register = () => {
             tel: formData.tel,
             userId: profile.userId,
             line_name: profile.displayName,
-            picture : profile.pictureUrl
+            picture: profile.pictureUrl
         }
-        if (formData.cid == '' || formData.tel == '') {
+        if (formData.cid == '' || formData.tel == '' || Object.keys(profile).length == 0 ) {
             setUAlertm('กรุณากรอกข้อมูลให้ครบ')
         } else {
             try {
@@ -76,14 +76,15 @@ const Register = () => {
         <div style={{ textAlign: "center" }}>
             <NavHeader />
 
-            <div id="wrap">
+            <div style={{ paddingTop : '20%' }}>
                 <div className='text-center' style={{ marginTop: 0 }}>
-                    <h4 style={{ color: '#3f51b5' }}>กรอกข้อมูลเพื่อสมัคร</h4>
+                    <h4 style={{ color: '#3f51b5' }}>ลงทะเบียนเข้าใช้งาน</h4>
                 </div>
 
                 <form>
                     <div style={{ paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
-                        <img src={profile.pictureUrl} width={100} height={100} style={{ borderRadius: '50%' }} />
+                        {console.log(Object.keys(profile).length)}
+                        <img src={Object.keys(profile).length == 0 ? './images/user.gif' : profile.pictureUrl} width={80} height={80} style={{ borderRadius: '50%' }} />
                         <div className="form-group" style={{ marginTop: 30 }}>
                             <input type="text" value={formData.cid} name='cid' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="เลขบัตรประจำตัวประชาชน"
                                 onChange={e => {
@@ -106,17 +107,19 @@ const Register = () => {
                     </div>
                 </form>
                 <p style={{ color: 'red' }}>{alertM}</p>
-            </div>
 
-            <div>
-                <img src='../images/3.png' />
-            </div>
-            <div id="footer" >
-                <div >
+                <div style={{ marginTop : 50,marginLeft : 20 ,marginRight : 20}} >
                     <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
                         สมัครเข้าใช้งาน
                     </Button>
                 </div>
+            </div>
+
+            {/* <div>
+                <img src='../images/3.png' />
+            </div> */}
+            <div id="footer" >
+
 
                 {/* <Button type="primary" shape="round" block size={'large'} onClick={logout} >
         logout
