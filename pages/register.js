@@ -58,7 +58,7 @@ const Register = () => {
             line_name: profile.displayName,
             picture: profile.pictureUrl
         }
-        if (formData.cid == '' || formData.tel == '' || Object.keys(profile).length == 0 ) {
+        if (formData.cid == '' || formData.tel == '' || Object.keys(profile).length == 0) {
             setUAlertm('กรุณากรอกข้อมูลให้ครบ')
         } else {
             try {
@@ -76,55 +76,50 @@ const Register = () => {
         <div style={{ textAlign: "center" }}>
             <NavHeader />
 
-            <div style={{ paddingTop : '20%' }}>
-                <div className='text-center' style={{ marginTop: 0 }}>
-                    <h4 style={{ color: '#3f51b5' }}>ลงทะเบียนเข้าใช้งาน</h4>
-                </div>
-
-                <form>
-                    <div style={{ paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
-                        {console.log(Object.keys(profile).length)}
-                        <img src={Object.keys(profile).length == 0 ? './images/user.gif' : profile.pictureUrl} width={80} height={80} style={{ borderRadius: '50%' }} />
-                        <div className="form-group" style={{ marginTop: 30 }}>
-                            <input type="text" value={formData.cid} name='cid' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="เลขบัตรประจำตัวประชาชน"
-                                onChange={e => {
-                                    // setIsCode(false)
-                                    setFormData({ ...formData, cid: e.target.value })
-                                    setUAlertm('')
-                                }}
-                            />
-                        </div>
-                        <div className="form-group" style={{ marginTop: 30 }}>
-                            <input type="text" value={formData.tel} name='tel' className="form-control" id="exampleInputPassword1" placeholder="เบอร์โทร"
-                                onChange={e => {
-                                    // setIsCode(false)
-                                    setFormData({ ...formData, tel: e.target.value })
-                                    setUAlertm('')
-                                }}
-
-                            />
-                        </div>
+            <div style={{ paddingTop: '20%' }}>
+                <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10,height:500,borderRadius : 15 }}>
+                    <p></p>
+                    <div className='text-center' style={{ marginTop: 0 }}>
+                        <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเข้าใช้งาน</h4>
                     </div>
-                </form>
-                <p style={{ color: 'red' }}>{alertM}</p>
 
-                <div style={{ marginTop : 50,marginLeft : 20 ,marginRight : 20}} >
-                    <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
-                        สมัครเข้าใช้งาน
-                    </Button>
+                    <form>
+                        <div style={{ paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
+                            {console.log(Object.keys(profile).length)}
+                            <img src={Object.keys(profile).length == 0 ? './images/user.gif' : profile.pictureUrl} width={80} height={80} style={{ borderRadius: '50%' }} />
+                            <div className="form-group" style={{ marginTop: 30 }}>
+                                <input type="text" value={formData.cid} name='cid' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="เลขบัตรประจำตัวประชาชน"
+                                    onChange={e => {
+                                        // setIsCode(false)
+                                        setFormData({ ...formData, cid: e.target.value })
+                                        setUAlertm('')
+                                    }}
+                                />
+                            </div>
+                            <div className="form-group" style={{ marginTop: 30 }}>
+                                <input type="text" value={formData.tel} name='tel' className="form-control" id="exampleInputPassword1" placeholder="เบอร์โทร"
+                                    onChange={e => {
+                                        // setIsCode(false)
+                                        setFormData({ ...formData, tel: e.target.value })
+                                        setUAlertm('')
+                                    }}
+
+                                />
+                            </div>
+                        </div>
+                    </form>
+                    <p style={{ color: 'red' }}>{alertM}</p>
+
+                    <div style={{ marginTop: 50, marginLeft: 20, marginRight: 20,marginBottom:100 }} >
+                        <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
+                            สมัครเข้าใช้งาน
+                        </Button>
+                    </div>
                 </div>
             </div>
 
-            {/* <div>
-                <img src='../images/3.png' />
-            </div> */}
-            <div id="footer" >
 
 
-                {/* <Button type="primary" shape="round" block size={'large'} onClick={logout} >
-        logout
-    </Button> */}
-            </div>
         </div>
     )
 }

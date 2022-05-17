@@ -31,7 +31,7 @@ const Queue = (value) => {
     <div>
       <NavHeader />
 
-      <div className='text-center' style={{ paddingTop: '20%' }}>
+      <div style={{ paddingTop: '20%' }}>
         <ProfilePage />
         <h3 style={{ color: '#3f51b5' }}>เลือกแผนกจองคิว</h3>
         <div className="card green" style={{ marginTop: 50 }} onClick={() => onDep(1)}>

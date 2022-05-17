@@ -25,7 +25,7 @@ class MyDocument extends Document {
 
 
                 </Head>
-                <body style={{ fontFamily: 'Kanit' }}>
+                <body style={{ fontFamily: 'Kanit',backgroundColor : '#ECECEC' }}>
                     <Main />
                     <NextScript />
 
