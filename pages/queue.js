@@ -46,7 +46,7 @@ const Queue = (value) => {
           <div className='col-6'>
             <div className='text-center' style={{ backgroundColor: 'white', marginLeft: 0, marginRight: 5, height: 100, borderRadius: 15 }}>
               {/* <div className='row'> */}
-              <img src={'./images/pharmacy.gif'} width={40} height={40} />
+              <img src={'./images/hos.gif'} width={40} height={40} />
               <p style={{ paddingTop: 0, fontSize: 19 }}>ทันตกรรม</p>
               {/* </div> */}
             </div>
