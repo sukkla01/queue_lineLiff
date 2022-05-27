@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProfilePage = (data) => {
+const ProfilePage = (props) => {
   return (
     <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 130, borderRadius: 15 }}>
       <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
@@ -10,7 +10,7 @@ const ProfilePage = (data) => {
         </div>
         <div className='col-8'>
           <div className='row' style={{ fontSize: 15 }}>
-            ชื่อ - สกุล : {data.userId}
+            ชื่อ - สกุล : {props}
           </div>
           <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
             เบอร์โทร : 0931368858
