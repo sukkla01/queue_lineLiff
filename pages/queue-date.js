@@ -13,9 +13,9 @@ const QueueDate = () => {
   const router = useRouter()
   const { dep } = router.query
   const [dateShow, setSDateShow] = useState("");
-  const [name, setName] = useState({})
-  const [userId, setUserId] = useState({})
-  const [picture, setPicture] = useState({})
+  const [name, setName] = useState('')
+  const [userId, setUserId] = useState('')
+  const [picture, setPicture] = useState('')
 
 
   useEffect(() => {
