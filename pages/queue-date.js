@@ -19,9 +19,7 @@ const QueueDate = () => {
 
 
   useEffect(() => {
-    let profile = localStorage.getItem('profile');
-    setProfile(profile)
-    alert(JSON.stringify(profile))
+
     // getData()
     setName(localStorage.getItem('name'))
     setUserId(localStorage.getItem('userId'))
@@ -67,7 +65,7 @@ const QueueDate = () => {
                 ชื่อ - สกุล : {name}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                HN : {Object.keys(profile).length }
+                HN : 
               </div>
             </div>
           </div>
