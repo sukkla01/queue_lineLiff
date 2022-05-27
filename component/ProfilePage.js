@@ -10,7 +10,7 @@ const ProfilePage = () => {
         </div>
         <div className='col-8'>
           <div className='row' style={{ fontSize: 15 }}>
-            ชื่อ - สกุล : 
+            ชื่อ - สกุล :  
           </div>
           <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
             เบอร์โทร : 0931368858
