@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProfilePage = (props) => {
+const ProfilePage = () => {
   return (
     <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 130, borderRadius: 15 }}>
       <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
