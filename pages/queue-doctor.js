@@ -45,9 +45,6 @@ const QueueDoctor = () => {
     <div>
       <NavHeader />
       <div style={{ paddingTop: '20%' }}>
-        {/* <ProfilePage /> */}
-        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแพทย์</h6>
-
         {/* Profile */}
         <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
           <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
@@ -66,6 +63,9 @@ const QueueDoctor = () => {
           </div>
         </div>
         {/* Profile */}
+        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแพทย์</h6>
+
+
 
       </div>
 
