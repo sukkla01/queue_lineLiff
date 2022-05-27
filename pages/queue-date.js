@@ -17,8 +17,9 @@ const QueueDate = () => {
 
 
   useEffect(() => {
-   let profile =  localStorage.getItem('profile');
-   setProfile(profile)
+    let profile = localStorage.getItem('profile');
+    setProfile(profile)
+    alert(JSON.stringify(profile))
     // getData()
   })
 
@@ -34,24 +35,21 @@ const QueueDate = () => {
   }
 
   const onNext = (value) => {
-
     router.push({
       pathname: '/queue-time',
-      query: { dep: dep,date :  dateShow},
+      query: { dep: dep, date: dateShow },
     })
-
-
   }
 
- 
-  
+
+
 
   return (
     <div>
       <NavHeader />
 
       <div style={{ paddingTop: '20%' }}>
-        
+
         {/* Profile */}
         <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
           <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
@@ -64,7 +62,7 @@ const QueueDate = () => {
                 ชื่อ - สกุล : {profile.displayName}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                HN : xxxxxxxx
+                HN : {JSON.stringify(profile)}
               </div>
             </div>
           </div>
@@ -88,21 +86,19 @@ const QueueDate = () => {
 
         <div className='row' style={{ marginTop: 50, marginLeft: 10, marginRight: 10, marginBottom: 100 }} >
           <div className='col-6'>
-            <Button type={"default"} shape="round" block size={'large'}  onClick={onBack} >
+            <Button type={"default"} shape="round" block size={'large'} onClick={onBack} >
               กลับ
             </Button>
 
           </div>
           <div className='col-6'>
-            <Button type={"primary"} shape="round" block size={'large'}  onClick={onNext} >
+            <Button type={"primary"} shape="round" block size={'large'} onClick={onNext} >
               ถัดไป
             </Button>
 
           </div>
 
         </div>
-
-
       </div>
     </div>
   )

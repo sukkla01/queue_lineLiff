@@ -8,9 +8,10 @@ import { Button, Radio } from 'antd';
 const Queue = (value) => {
   const router = useRouter()
   const [profile, setProfile] = useState({})
+  const [test, setTest] = useState({'ss':11})
   const [selectId, setSelectId] = useState(0)
   useEffect(() => {
-    console.log('1234')
+ 
     localStorage.setItem('path', 'queue');
     async function getData() {
       const liff = (await import('@line/liff')).default
@@ -60,7 +61,7 @@ const Queue = (value) => {
                 ชื่อ - สกุล : {profile.displayName}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                HN : xxxxxxxx
+                HN : 
               </div>
             </div>
           </div>
