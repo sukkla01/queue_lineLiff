@@ -35,7 +35,7 @@ const QueueDoctor = () => {
         <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแพทย์</h6>
 
         {data.map((item, i) => {
-          return <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 85, borderRadius: 15, marginTop: 10 }}>
+          return <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 85, borderRadius: 15, marginTop: 10 }} key={i}>
             <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
               <div className='col-4'>
                 <img src={'./images/user.png'} width={60} height={60} style={{ borderRadius: '50%' }} />
