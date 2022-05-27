@@ -18,7 +18,9 @@ const Queue = (value) => {
       await liff.ready
       const profile = await liff.getProfile()
       setProfile(profile)
-      localStorage.setItem('profile', profile);
+      localStorage.setItem('name', profile.displayName);
+      localStorage.setItem('userId', profile.userId);
+      localStorage.setItem('picture', profile.pictureUrl);
     }
     getData()
   })

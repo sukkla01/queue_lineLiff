@@ -13,7 +13,9 @@ const QueueDate = () => {
   const router = useRouter()
   const { dep } = router.query
   const [dateShow, setSDateShow] = useState("");
-  const [profile, setProfile] = useState({})
+  const [name, setName] = useState({})
+  const [userId, setUserId] = useState({})
+  const [picture, setPicture] = useState({})
 
 
   useEffect(() => {
@@ -21,6 +23,9 @@ const QueueDate = () => {
     setProfile(profile)
     alert(JSON.stringify(profile))
     // getData()
+    setName(localStorage.getItem('name'))
+    setUserId(localStorage.getItem('userId'))
+    setPicture(localStorage.getItem('picture'))
   })
 
   function onPanelChange(value, mode) {
@@ -54,12 +59,12 @@ const QueueDate = () => {
         <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
           <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
             <div className='col-4'>
-              <img src={Object.keys(profile).length == 0 ? './images/user.gif' : profile.pictureUrl} width={80} height={80} style={{ borderRadius: '50%' }} />
+              <img src={picture} width={80} height={80} style={{ borderRadius: '50%' }} />
 
             </div>
             <div className='col-8'>
               <div className='row' style={{ fontSize: 15 }}>
-                ชื่อ - สกุล : {profile.displayName}
+                ชื่อ - สกุล : {name}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
                 HN : {Object.keys(profile).length }
