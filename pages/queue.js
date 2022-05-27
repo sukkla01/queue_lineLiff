@@ -46,7 +46,25 @@ const Queue = (value) => {
       <NavHeader />
 
       <div style={{ paddingTop: '20%' }}>
-        <ProfilePage data ={profile} />
+        {/* Profile */}
+        <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 130, borderRadius: 15 }}>
+          <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
+            <div className='col-4'>
+              <img src={Object.keys(profile).length == 0 ? './images/user.gif' : profile.pictureUrl} width={80} height={80} style={{ borderRadius: '50%' }} />
+
+            </div>
+            <div className='col-8'>
+              <div className='row' style={{ fontSize: 15 }}>
+                ชื่อ - สกุล : {profile.displayName}
+              </div>
+              <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
+                เบอร์โทร : 0931368858
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {/* Profile */}
         <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแผนกจองคิว</h6>
 
         <div className='row' style={{ paddingTop: 5, paddingLeft: 15, paddingRight: 15 }}>
