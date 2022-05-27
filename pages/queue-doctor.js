@@ -3,15 +3,13 @@ import { useRouter } from 'next/router'
 import NavHeader from '../component/NavHeader'
 import ProfilePage from '../component/ProfilePage'
 import { Button } from 'antd';
-    const [name, setName] = useState('')
-    const [userId, setUserId] = useState('')
-    const [picture, setPicture] = useState('')
+
 const QueueDoctor = () => {
 
   const [name, setName] = useState('')
   const [userId, setUserId] = useState('')
   const [picture, setPicture] = useState('')
-  
+
   let data = [
     { tname: 'xxx  xxxxx', dep: 'zzz zzzzz' },
     { tname: 'www  wwwww', dep: 'zzz zzzzz' }
@@ -24,7 +22,7 @@ const QueueDoctor = () => {
     setName(localStorage.getItem('name'))
     setUserId(localStorage.getItem('userId'))
     setPicture(localStorage.getItem('picture'))
-})
+  })
 
 
   const onBack = () => {
@@ -50,8 +48,8 @@ const QueueDoctor = () => {
         {/* <ProfilePage /> */}
         <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแพทย์</h6>
 
-          {/* Profile */}
-          <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
+        {/* Profile */}
+        <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
           <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
             <div className='col-4'>
               <img src={picture} width={80} height={80} style={{ borderRadius: '50%' }} />
@@ -62,7 +60,7 @@ const QueueDoctor = () => {
                 ชื่อ - สกุล : {name}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                HN : 
+                HN :
               </div>
             </div>
           </div>
