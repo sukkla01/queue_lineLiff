@@ -13,8 +13,14 @@ const QueueDate = () => {
   const router = useRouter()
   const { dep } = router.query
   const [dateShow, setSDateShow] = useState("");
+  const [profile, setProfile] = useState({})
 
 
+  useEffect(() => {
+   let profile =  localStorage.getItem('profile');
+   setProfile(profile)
+    // getData()
+  })
 
   function onPanelChange(value, mode) {
     console.log(moment(value).format('YYYY-MM-DD'));
@@ -64,6 +70,7 @@ const QueueDate = () => {
           </div>
         </div>
         {/* Profile */}
+        
         <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว</h6>
 
         <div className="site-calendar-demo-card" style={{ marginLeft: 15, marginRight: 10, borderRadius: 15 }}>
