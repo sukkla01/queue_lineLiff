@@ -31,7 +31,7 @@ const QueueDoctor = () => {
     <div>
       <NavHeader />
       <div style={{ paddingTop: '20%' }}>
-        <ProfilePage />
+        {/* <ProfilePage /> */}
         <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแพทย์</h6>
 
         {data.map((item, i) => {
