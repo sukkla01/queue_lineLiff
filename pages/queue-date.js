@@ -62,7 +62,7 @@ const QueueDate = () => {
                 ชื่อ - สกุล : {profile.displayName}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                HN : {JSON.stringify(profile)}
+                HN : {Object.keys(profile).length }
               </div>
             </div>
           </div>
