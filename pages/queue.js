@@ -19,7 +19,7 @@ const Queue = (value) => {
       setProfile(profile)
       localStorage.setItem('profile', profile);
     }
-    // getData()
+    getData()
   })
 
   const onDep = (value) => {
