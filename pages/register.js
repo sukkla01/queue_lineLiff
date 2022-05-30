@@ -36,12 +36,14 @@ const Register = () => {
     const getCid = async (userId) => {
         try {
             let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
-            console.log(res.data)
-            if (res.data.status == 'ok') {
-                setStatus(true)
-            } else {
-                console.log('error')
+
+            if (res.data.length > 0) {
+                router.push({
+                    pathname: '/register-success',
+                    query: { userId: userId },
+                })
             }
+
         } catch (error) {
             console.log(error)
         }
@@ -77,7 +79,7 @@ const Register = () => {
             <NavHeader />
 
             <div style={{ paddingTop: '20%' }}>
-                <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10,height:500,borderRadius : 15 }}>
+                <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
                     <p></p>
                     <div className='text-center' style={{ marginTop: 0 }}>
                         <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเข้าใช้งาน</h4>
@@ -110,7 +112,7 @@ const Register = () => {
                     </form>
                     <p style={{ color: 'red' }}>{alertM}</p>
 
-                    <div style={{ marginTop: 50, marginLeft: 20, marginRight: 20,marginBottom:100 }} >
+                    <div style={{ marginTop: 50, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
                         <Button type={profile != {} ? "primary" : "default"} shape="round" block size={'large'} onClick={submit} >
                             สมัครเข้าใช้งาน
                         </Button>
