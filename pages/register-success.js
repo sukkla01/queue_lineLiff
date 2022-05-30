@@ -1,4 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import NavHeader from '../component/NavHeader';
+import axios from 'axios'
+import config from '../config'
+
+const BASE_URL = config.BASE_URL
 
 const RegisterSuccess = () => {
 
