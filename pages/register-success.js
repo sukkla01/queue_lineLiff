@@ -31,7 +31,7 @@ const RegisterSuccess = () => {
     return (
         <div style={{ textAlign: "center" }}>
             <NavHeader />
-            <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเรียบร้อยแล้ว {data.length }</h4>
+            <h4 style={{ color: '#3f51b5', paddingTop: 100 }}>ลงทะเบียนเรียบร้อยแล้ว {data.length }</h4>
             {data.length > 0 ?
                 <div style={{ paddingTop: '20%' }}>
                     <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
