@@ -51,7 +51,7 @@ const QueueSuccess = () => {
         try {
             let res = await axios.post(`${BASE_URL}/add-reserve`, data)
             router.push({
-                pathname: '/reserve-success',
+                pathname: '/reserv-success',
                 query: { userId: userId },
             })
 
