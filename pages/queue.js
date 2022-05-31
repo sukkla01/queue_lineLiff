@@ -14,6 +14,7 @@ const Queue = (value) => {
   const [test, setTest] = useState({ 'ss': 11 })
   const [selectId, setSelectId] = useState(0)
   const [hn, setHn] = useState('')
+  const [tname, setTname] = useState('')
   useEffect(() => {
 
     localStorage.setItem('path', 'queue');
@@ -25,7 +26,7 @@ const Queue = (value) => {
       localStorage.setItem('name', profile.displayName);
       localStorage.setItem('userId', profile.userId);
       localStorage.setItem('picture', profile.pictureUrl);
-      
+
       getCid(profile.userId)
     }
     getData()
@@ -35,8 +36,21 @@ const Queue = (value) => {
   const getCid = async (userId) => {
     try {
       let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
-      setHn(res.data[0].hn)
-      localStorage.setItem('hn', res.data[0].hn);
+      if (res.data.length > 0) {
+        setHn(res.data[0].hn)
+        setTname(res.data[0].tname)
+        localStorage.setItem('hn', res.data[0].hn);
+
+      } else {
+
+        router.push({
+          pathname: '/register',
+          query: { userId: userId },
+        })
+      }
+
+
+
 
     } catch (error) {
       console.log(error)
@@ -78,7 +92,7 @@ const Queue = (value) => {
             </div>
             <div className='col-8'>
               <div className='row' style={{ fontSize: 15 }}>
-                ชื่อ - สกุล : {profile.displayName}
+                ชื่อ - สกุล : {tname}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
                 HN : {hn}
