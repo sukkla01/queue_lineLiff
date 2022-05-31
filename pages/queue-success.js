@@ -33,7 +33,7 @@ const QueueSuccess = () => {
         setHn(localStorage.getItem('hn'))
         console.log(depData)
 
-        depData.map((item,i)=>{
+        depData.map((item, i) => {
             console.log(item.id)
             dep == item.id ? setDepName(item.name) : ''
         })
@@ -44,19 +44,17 @@ const QueueSuccess = () => {
 
     const onSubmit = async (userId) => {
         let data = {
-            hn : hn,
-            nextdate : date,
-            dep : dep,
+            hn: hn,
+            nextdate: date,
+            dep: dep,
         }
         try {
-            let res = await axios.post(`${BASE_URL}/add-reserve`,data)
+            let res = await axios.post(`${BASE_URL}/add-reserve`, data)
+            router.push({
+                pathname: '/reserve-success',
+                query: { userId: userId },
+            })
 
-            if (res.data.length > 0) {
-                router.push({
-                    pathname: '/register-success',
-                    query: { userId: userId },
-                })
-            }
 
         } catch (error) {
             console.log(error)
@@ -100,13 +98,13 @@ const QueueSuccess = () => {
 
                 <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 150, borderRadius: 15, marginTop: 20 }}>
                     <div className='text-center' style={{ marginTop: 0 }}>
-                        <div  style={{ fontSize: 17, paddingTop: 20,fontWeight:'bold' }}>
-                            ข้อมูลการจอง 
+                        <div style={{ fontSize: 17, paddingTop: 20, fontWeight: 'bold' }}>
+                            ข้อมูลการจอง
                         </div>
-                        <div  style={{ fontSize: 15, paddingTop: 20 }}>
+                        <div style={{ fontSize: 15, paddingTop: 20 }}>
                             แผนก : {depName}
                         </div>
-                        <div   style={{ fontSize: 15, paddingTop: 10 }}>
+                        <div style={{ fontSize: 15, paddingTop: 10 }}>
                             วันที่จอง : {moment(date).format('ll')}
                         </div>
                     </div>
@@ -132,7 +130,7 @@ const QueueSuccess = () => {
 
                     </div>
                     <div className='col-6'>
-                        <Button type={"primary"} shape="round" block size={'large'}  onClick ={onSubmit} >
+                        <Button type={"primary"} shape="round" block size={'large'} onClick={onSubmit} >
                             ยืนยัน
                         </Button>
 
