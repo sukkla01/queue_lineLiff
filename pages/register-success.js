@@ -14,7 +14,7 @@ const RegisterSuccess = () => {
 
     useEffect(() => {
         getCid()
-    },[])
+    }, [])
 
 
     const getCid = async () => {
@@ -32,18 +32,19 @@ const RegisterSuccess = () => {
         <div style={{ textAlign: "center" }}>
             <NavHeader />
 
-            <div style={{ paddingTop: '20%' }}>
-                <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
-                    <p></p>
-                    <div className='text-center' style={{ marginTop: 0 }}>
-                        <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเรียบร้อยแล้ว {userId}</h4>
-                        <img src={data[0].picture} width={80} height={80} style={{ borderRadius: '50%' }} />
+            {data.length > 0 ?
+                <div style={{ paddingTop: '20%' }}>
+                    <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
+                        <p></p>
+                        <div className='text-center' style={{ marginTop: 0 }}>
+                            <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเรียบร้อยแล้ว {userId}</h4>
+                            <img src={data[0].picture} width={80} height={80} style={{ borderRadius: '50%' }} />
+                        </div>
+
+
+
                     </div>
-
-
-
-                </div>
-            </div>
+                </div> : ''}
 
 
 
