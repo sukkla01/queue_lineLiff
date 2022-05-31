@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         let path  = localStorage.getItem('path')
         
         liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${path}` })
-        
+         
 
         
       }
