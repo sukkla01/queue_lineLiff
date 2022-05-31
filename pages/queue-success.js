@@ -37,6 +37,29 @@ const QueueSuccess = () => {
 
 
     }, [])
+
+
+    const onSubmit = async (userId) => {
+        let data = {
+            hn : hn,
+            nextdate : date,
+            dep : dep,
+        }
+        try {
+            let res = await axios.get(`${BASE_URL}/add-reserve`,data)
+
+            if (res.data.length > 0) {
+                router.push({
+                    pathname: '/register-success',
+                    query: { userId: userId },
+                })
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const onBack = (value) => {
 
         router.push({
@@ -106,7 +129,7 @@ const QueueSuccess = () => {
 
                     </div>
                     <div className='col-6'>
-                        <Button type={"primary"} shape="round" block size={'large'}  >
+                        <Button type={"primary"} shape="round" block size={'large'}  onClick ={onSubmit} >
                             ยืนยัน
                         </Button>
 
