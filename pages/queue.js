@@ -3,7 +3,10 @@ import NavHeader from '../component/NavHeader'
 import { useRouter } from 'next/router'
 import ProfilePage from '../component/ProfilePage'
 import { Button, Radio } from 'antd';
+import axios from 'axios'
+import config from '../config'
 
+const BASE_URL = config.BASE_URL
 
 const Queue = (value) => {
   const router = useRouter()
@@ -26,6 +29,7 @@ const Queue = (value) => {
       getCid(profile.userId)
     }
     getData()
+    // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
   })
 
   const getCid = async (userId) => {
