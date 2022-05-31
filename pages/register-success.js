@@ -37,7 +37,7 @@ const RegisterSuccess = () => {
                     <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
                         <p></p>
                         <div className='text-center' style={{ marginTop: 0 }}>
-                            <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเรียบร้อยแล้ว {userId}</h4>
+                            <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเรียบร้อยแล้ว</h4>
                             <img src={data[0].picture} width={80} height={80} style={{ borderRadius: '50%', marginTop:20,marginBottom:20 }} />
                             <p style={{ marginTop:10,fontSize:16  }}>{data[0].tname}</p>
                             <p style={{ marginTop:-10,fontSize:30 }}>{data[0].hn}</p>
