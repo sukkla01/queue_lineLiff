@@ -23,7 +23,7 @@ const QueueTime = () => {
         setName(localStorage.getItem('name'))
         setUserId(localStorage.getItem('userId'))
         setPicture(localStorage.getItem('picture'))
-    })
+    },[])
 
     const onSelect = (value) => {
         setSelectId(value)
