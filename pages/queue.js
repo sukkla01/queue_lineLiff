@@ -92,9 +92,9 @@ const Queue = (value) => {
             </div>
             <div className='col-8'>
               <div className='row' style={{ fontSize: 15 }}>
-                ชื่อ - สกุล : {tname}
+                ชื่อ-สกุล : {tname}
               </div>
-              <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
+              <div className='row' style={{ fontSize: 15, paddingTop: 10 }}>
                 HN : {hn}
               </div>
             </div>

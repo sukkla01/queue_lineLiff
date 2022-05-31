@@ -13,6 +13,7 @@ const QueueDate = () => {
   const router = useRouter()
   const { dep } = router.query
   const [dateShow, setSDateShow] = useState("");
+  const [date, setDate] = useState("");
   const [name, setName] = useState('')
   const [userId, setUserId] = useState('')
   const [picture, setPicture] = useState('')
@@ -31,6 +32,7 @@ const QueueDate = () => {
   function onPanelChange(value, mode) {
     console.log(moment(value).format('YYYY-MM-DD'));
     setSDateShow(moment(value).format('ll'))
+    setDate(moment(value).format('YYYY-MM-DD'))
   }
 
   const onBack = () => {
@@ -42,7 +44,7 @@ const QueueDate = () => {
   const onNext = (value) => {
     router.push({
       pathname: '/queue-success',
-      query: { dep: dep, date: dateShow },
+      query: { dep: dep, date: date },
     })
   }
 
@@ -64,9 +66,9 @@ const QueueDate = () => {
             </div>
             <div className='col-8'>
               <div className='row' style={{ fontSize: 15 }}>
-                ชื่อ - สกุล : {name}
+                ชื่อ-สกุล : {name}
               </div>
-              <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
+              <div className='row' style={{ fontSize: 15, paddingTop: 10 }}>
                 HN : {hn}
               </div>
             </div>
@@ -74,7 +76,7 @@ const QueueDate = () => {
         </div>
         {/* Profile */}
 
-        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว</h6>
+        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว {dep}</h6>
 
         <div className="site-calendar-demo-card" style={{ marginLeft: 15, marginRight: 10, borderRadius: 15 }}>
           <ConfigProvider locale={th_TH}>
