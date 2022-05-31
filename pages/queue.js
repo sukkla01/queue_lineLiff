@@ -8,10 +8,11 @@ import { Button, Radio } from 'antd';
 const Queue = (value) => {
   const router = useRouter()
   const [profile, setProfile] = useState({})
-  const [test, setTest] = useState({'ss':11})
+  const [test, setTest] = useState({ 'ss': 11 })
   const [selectId, setSelectId] = useState(0)
+  const [hn, setHn] = useState('')
   useEffect(() => {
- 
+
     localStorage.setItem('path', 'queue');
     async function getData() {
       const liff = (await import('@line/liff')).default
@@ -21,9 +22,22 @@ const Queue = (value) => {
       localStorage.setItem('name', profile.displayName);
       localStorage.setItem('userId', profile.userId);
       localStorage.setItem('picture', profile.pictureUrl);
+      
+      getCid()
     }
-    getData()
+    getData(profile.userId)
   })
+
+  const getCid = async (userId) => {
+    try {
+      let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
+      setHn(res.data[0].hn)
+      localStorage.setItem('hn', res.data[0].hn);
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const onDep = (value) => {
 
@@ -63,7 +77,7 @@ const Queue = (value) => {
                 ชื่อ - สกุล : {profile.displayName}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                HN : 
+                HN : {hn}
               </div>
             </div>
           </div>

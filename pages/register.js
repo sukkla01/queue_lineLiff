@@ -116,6 +116,7 @@ const Register = () => {
                                     onKeyPress={(event) => {
                                         if (!/[0-9]/.test(event.key)) {
                                           event.preventDefault();
+                                          console.log('dd')
                                           setUAlertm('กรอกเฉพาะตัวเลข')
                                         }
                                       }}
