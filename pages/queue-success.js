@@ -75,7 +75,7 @@ const QueueSuccess = () => {
                 <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 150, borderRadius: 15, marginTop: 20 }}>
                     <div className='text-center' style={{ marginTop: 0 }}>
                         <div  style={{ fontSize: 17, paddingTop: 20,fontWeight:'bold' }}>
-                            ข้อมูลการจอง {dep} {date}
+                            ข้อมูลการจอง 
                         </div>
                         <div  style={{ fontSize: 15, paddingTop: 20 }}>
                             แผนก : {depName}
