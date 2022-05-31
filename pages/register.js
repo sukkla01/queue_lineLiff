@@ -116,6 +116,7 @@ const Register = () => {
                                     onKeyPress={(event) => {
                                         if (!/[0-9]/.test(event.key)) {
                                           event.preventDefault();
+                                          setUAlertm('กรอกเฉพาะตัวเลข')
                                         }
                                       }}
                                 />
@@ -130,6 +131,7 @@ const Register = () => {
                                     onKeyPress={(event) => {
                                         if (!/[0-9]/.test(event.key)) {
                                           event.preventDefault();
+                                          setUAlertm('กรอกเฉพาะตัวเลข')
                                         }
                                       }}
                                 />
