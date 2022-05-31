@@ -7,7 +7,10 @@ import depData from '../data'
 import * as moment from 'moment';
 import 'moment/locale/th';
 moment.locale('th')
+import axios from 'axios'
+import config from '../config'
 
+const BASE_URL = config.BASE_URL
 
 
 const QueueSuccess = () => {
@@ -46,7 +49,7 @@ const QueueSuccess = () => {
             dep : dep,
         }
         try {
-            let res = await axios.get(`${BASE_URL}/add-reserve`,data)
+            let res = await axios.post(`${BASE_URL}/add-reserve`,data)
 
             if (res.data.length > 0) {
                 router.push({
