@@ -19,7 +19,7 @@ const RegisterSuccess = () => {
 
     const getCid = async () => {
         try {
-            let res = await axios.get(`${BASE_URL}/${userId}`)
+            let res = await axios.get(`${BASE_URL}/U2c04ba314d6649a7f6f2cc3b554b0ad9`)
             console.log(res.data)
             setData(res.data)
         } catch (error) {
