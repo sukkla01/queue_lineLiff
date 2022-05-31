@@ -19,7 +19,7 @@ const RegisterSuccess = () => {
 
     const getCid = async () => {
         try {
-            let res = await axios.get(`${BASE_URL}/U2c04ba314d6649a7f6f2cc3b554b0ad9`)
+            let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
             console.log(res.data)
             setData(res.data)
         } catch (error) {
@@ -31,7 +31,6 @@ const RegisterSuccess = () => {
     return (
         <div style={{ textAlign: "center" }}>
             <NavHeader />
-            <h4 style={{ color: '#3f51b5', paddingTop: 100 }}>ลงทะเบียนเรียบร้อยแล้ว {data.length }</h4>
             {data.length > 0 ?
                 <div style={{ paddingTop: '20%' }}>
                     <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
