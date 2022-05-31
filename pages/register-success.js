@@ -2,22 +2,25 @@ import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader';
 import axios from 'axios'
 import config from '../config'
+import { useRouter } from 'next/router'
 
 const BASE_URL = config.BASE_URL
 
 const RegisterSuccess = () => {
 
     const [data, setData] = useState([])
-
+    const router = useRouter()
+    const { userId } = router.query
 
     useEffect(() => {
         getCid()
-    })
+    },[])
 
 
-    const getCid = async (userId) => {
+    const getCid = async () => {
         try {
             let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
+            console.log(res.data)
             setData(res.data)
         } catch (error) {
             console.log(error)
