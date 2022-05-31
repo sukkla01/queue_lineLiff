@@ -31,7 +31,7 @@ const Queue = (value) => {
     }
     getData()
     // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
-  })
+  },[])
 
   const getCid = async (userId) => {
     try {
@@ -39,7 +39,7 @@ const Queue = (value) => {
       if (res.data.length > 0) {
         setHn(res.data[0].hn)
         setTname(res.data[0].tname)
-        localStorage.setItem('hn', res.data[0].hn);
+        localStorage.setItem('tname', res.data[0].tname);
 
       } else {
 

@@ -13,15 +13,17 @@ const QueueSuccess = () => {
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
-
+    const [hn, setHn] = useState('')
+  
+  
     useEffect(() => {
-
-        // getData()
-        setName(localStorage.getItem('name'))
-        setUserId(localStorage.getItem('userId'))
-        setPicture(localStorage.getItem('picture'))
-    }, [])
-
+  
+      // getData()
+      setName(localStorage.getItem('tname'))
+      setUserId(localStorage.getItem('userId'))
+      setPicture(localStorage.getItem('picture'))
+      setHn(localStorage.getItem('hn'))
+    },[])
     const onBack = (value) => {
 
         router.push({

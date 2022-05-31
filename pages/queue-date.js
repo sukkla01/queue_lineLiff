@@ -16,15 +16,17 @@ const QueueDate = () => {
   const [name, setName] = useState('')
   const [userId, setUserId] = useState('')
   const [picture, setPicture] = useState('')
+  const [hn, setHn] = useState('')
 
 
   useEffect(() => {
 
     // getData()
-    setName(localStorage.getItem('name'))
+    setName(localStorage.getItem('tname'))
     setUserId(localStorage.getItem('userId'))
     setPicture(localStorage.getItem('picture'))
-  })
+    setHn(localStorage.getItem('hn'))
+  },[])
 
   function onPanelChange(value, mode) {
     console.log(moment(value).format('YYYY-MM-DD'));
@@ -39,7 +41,7 @@ const QueueDate = () => {
 
   const onNext = (value) => {
     router.push({
-      pathname: '/queue-time',
+      pathname: '/queue-success',
       query: { dep: dep, date: dateShow },
     })
   }
@@ -65,7 +67,7 @@ const QueueDate = () => {
                 ชื่อ - สกุล : {name}
               </div>
               <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                HN : 
+                HN : {hn}
               </div>
             </div>
           </div>
