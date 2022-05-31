@@ -112,6 +112,12 @@ const Register = () => {
                                         setFormData({ ...formData, cid: e.target.value })
                                         setUAlertm('')
                                     }}
+
+                                    onKeyPress={(event) => {
+                                        if (!/[0-9]/.test(event.key)) {
+                                          event.preventDefault();
+                                        }
+                                      }}
                                 />
                             </div>
                             <div className="form-group" style={{ marginTop: 30 }}>
@@ -121,7 +127,11 @@ const Register = () => {
                                         setFormData({ ...formData, tel: e.target.value })
                                         setUAlertm('')
                                     }}
-
+                                    onKeyPress={(event) => {
+                                        if (!/[0-9]/.test(event.key)) {
+                                          event.preventDefault();
+                                        }
+                                      }}
                                 />
                             </div>
                         </div>
