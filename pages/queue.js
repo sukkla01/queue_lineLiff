@@ -23,9 +23,9 @@ const Queue = (value) => {
       localStorage.setItem('userId', profile.userId);
       localStorage.setItem('picture', profile.pictureUrl);
       
-      getCid()
+      getCid(profile.userId)
     }
-    getData(profile.userId)
+    getData()
   })
 
   const getCid = async (userId) => {
