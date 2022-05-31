@@ -63,13 +63,29 @@ const Register = () => {
         if (formData.cid == '' || formData.tel == '' || Object.keys(profile).length == 0) {
             setUAlertm('กรุณากรอกข้อมูลให้ครบ')
         } else {
+
             try {
-                let res = await axios.post(`${BASE_URL}/add-register`, data)
-                console.log(res.data)
-                router.push('/success')
+                let res = await axios.get(`${BASE_URL}/get-hn/${formData.cid}`)
+                if (res.data.length == 0) {
+                    setUAlertm('คุณยังไม่เคยมาโรงพยาบาลกรุณาติดต่อห้องบัตร')
+                } else {
+                    try {
+                        let res = await axios.post(`${BASE_URL}/add-register`, data)
+                        console.log(res.data)
+                        router.push('/success')
+                    } catch (error) {
+                        alert(error)
+                    }
+                }
             } catch (error) {
                 alert(error)
             }
+
+
+
+
+
+
 
         }
     }
