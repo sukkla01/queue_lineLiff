@@ -34,6 +34,7 @@ const RegisterSuccess = () => {
                     <p></p>
                     <div className='text-center' style={{ marginTop: 0 }}>
                         <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเรียบร้อยแล้ว</h4>
+                        <img src={data.picture} width={80} height={80} style={{ borderRadius: '50%' }} />
                     </div>
 
 
