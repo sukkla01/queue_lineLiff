@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import { useRouter } from 'next/router'
 import { Badge, Divider } from 'antd';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 import * as moment from 'moment';
 import 'moment/locale/th';
@@ -82,12 +84,12 @@ const ReserveList = () => {
     }
 
 
-    const onDel = async (id)=>{
+    const onDel = async (id) => {
         let data = {
-            id : id
+            id: id
         }
         try {
-            let res = await axios.post(`${BASE_URL}/del-reserve`, data,{ headers: { "token": token } })
+            let res = await axios.post(`${BASE_URL}/del-reserve`, data, { headers: { "token": token } })
             getDataRe(profile.userId)
 
         } catch (error) {
@@ -131,7 +133,29 @@ const ReserveList = () => {
                                 {/* <div className='text-center' style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: 0 }}>รอการตรวจสอบ</div> </div> */}
                             </div>
                             <div className='col-2' >
-                                <img src='./images/del.jpg' width={50} height={50}  style={{ marginLeft: -20,marginTop:10 }}  onClick={()=>onDel(item.vn_reserve)}/>
+                                {item.status == 1 ?
+                                    <img src='./images/del.jpg' width={50} height={50} style={{ marginLeft: -20, marginTop: 10 }} onClick={
+                                        confirmAlert({
+                                            customUI: ({ onClose }) => {
+                                                return (
+                                                    <div className='custom-ui'>
+                                                        <h1>คุณต้องการลบหรือไม่?</h1>
+                                                        {/* <p>You want to delete this file?</p> */}
+                                                        <button onClick={onClose}>ไม่</button>
+                                                        <button
+                                                            onClick={() => {
+                                                                onDel(item.vn_reserve)
+                                                                onClose();
+                                                            }}
+                                                        >
+                                                            ตกลง
+                                                        </button>
+                                                    </div>
+                                                );
+                                            }
+                                        })
+
+                                    } /> : ''}
                             </div>
 
                         </div>
