@@ -47,7 +47,6 @@ const ReserveList = () => {
 
 
     const getDataRe = async (userIdv) => {
-        colort[0]
         try {
             let res = await axios.get(`${BASE_URL}/get-reserve/${userIdv}`)
             console.log(res.data)
