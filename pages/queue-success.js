@@ -61,7 +61,7 @@ const QueueSuccess = () => {
                 })
             } else {
                 toast.warn('มีการจองงแล้วในวัน', {
-                    position: "top-right",
+                    position: "bottom-center",
                     autoClose: 8000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -159,7 +159,7 @@ const QueueSuccess = () => {
 
 
                 <ToastContainer
-                    position="top-right"
+                    position="bottom-center"
                     autoClose={8000}
                     hideProgressBar={false}
                     newestOnTop={false}
