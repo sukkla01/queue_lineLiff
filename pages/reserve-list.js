@@ -20,10 +20,10 @@ const ReserveList = () => {
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
     const [hn, setHn] = useState('')
-    const [data, setData] = useState([])
+    const [data, setData] = useState([{ 'aa': 12, 'ss': 66 }])
     const [profile, setProfile] = useState({})
 
-    const colort = [ '#ffc400','#00e676', '#f50057']
+    const colort = ['#ffc400', '#00e676', '#f50057']
 
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const ReserveList = () => {
             getDataRe(profile.userId)
             getCid(profile.userId)
         }
-        getData()
+        // getData()
         // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
     }, [])
 
@@ -81,6 +81,20 @@ const ReserveList = () => {
         }
     }
 
+
+    const onDel =(id)=>{
+        let data = {
+            id : id
+        }
+        try {
+            let res = await axios.get(`${BASE_URL}/del-reserve`, data,{ headers: { "token": token } })
+            getDataRe(profile.userId)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div>
             <NavHeader />
@@ -94,7 +108,7 @@ const ReserveList = () => {
                         </div>
                         <div className='col-8'>
                             <div className='row' style={{ fontSize: 15 }}>
-                                ชื่อ-สกุล : {name} 
+                                ชื่อ-สกุล : {name}
                             </div>
                             <div className='row' style={{ fontSize: 15, paddingTop: 10 }}>
                                 HN : {hn}
@@ -113,8 +127,11 @@ const ReserveList = () => {
                             <div className='col-8'>
                                 <div>แผนก : {item.name}</div>
                                 <div style={{ marginTop: 2 }}>วันที่จอง : {moment(item.nextdate).format('ll')}</div>
-                                <Badge color={colort[parseInt(item.status)-1]} text="รอตรวจสอบ" />
+                                <Badge color={colort[parseInt(item.status) - 1]} text="รอตรวจสอบ" />
                                 {/* <div className='text-center' style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: 0 }}>รอการตรวจสอบ</div> </div> */}
+                            </div>
+                            <div className='col-2' >
+                                <img src='./images/del.jpg' width={50} height={50}  style={{ marginLeft: -20,marginTop:10 }}  onClick={()=>onDel(item.vn_reserve)}/>
                             </div>
 
                         </div>
