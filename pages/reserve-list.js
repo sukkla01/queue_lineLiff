@@ -87,7 +87,7 @@ const ReserveList = () => {
             id : id
         }
         try {
-            let res = await axios.get(`${BASE_URL}/del-reserve`, data,{ headers: { "token": token } })
+            let res = await axios.post(`${BASE_URL}/del-reserve`, data,{ headers: { "token": token } })
             getDataRe(profile.userId)
 
         } catch (error) {
