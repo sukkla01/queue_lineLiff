@@ -38,6 +38,7 @@ const ReserveList = () => {
           localStorage.setItem('picture', profile.pictureUrl);
     
           getDataRe(profile.userId)
+          getCid(profile.userId)
         }
         getData()
         // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
@@ -55,6 +56,30 @@ const ReserveList = () => {
         }
     }
 
+    const getCid = async (userId) => {
+        try {
+          let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
+          if (res.data.length > 0) {
+            setHn(res.data[0].hn)
+            setTname(res.data[0].tname)
+            localStorage.setItem('tname', res.data[0].tname);
+    
+          } else {
+    
+            router.push({
+              pathname: '/register',
+              query: { userId: userId },
+            })
+          }
+    
+    
+    
+    
+        } catch (error) {
+          console.log(error)
+        }
+      }
+
     return (
         <div>
             <NavHeader />
@@ -63,7 +88,7 @@ const ReserveList = () => {
                 <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
                     <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
                         <div className='col-4'>
-                            <img src={picture} width={80} height={80} style={{ borderRadius: '50%' }} />
+                        <img src={Object.keys(profile).length == 0 ? './images/user.gif' : profile.pictureUrl} width={80} height={80} style={{ borderRadius: '50%' }} />
 
                         </div>
                         <div className='col-8'>
