@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import ProfilePage from '../component/ProfilePage'
-import { Button,message } from 'antd';
+import { Button, message } from 'antd';
 import { useRouter } from 'next/router'
 import depData from '../data'
 import * as moment from 'moment';
@@ -9,6 +9,9 @@ import 'moment/locale/th';
 moment.locale('th')
 import axios from 'axios'
 import config from '../config'
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = config.BASE_URL
 
@@ -57,7 +60,15 @@ const QueueSuccess = () => {
                     query: { userId: userId },
                 })
             } else {
-                message.warning('มีการจองงแล้วในวัน');
+                toast.warn('มีการจองงแล้วในวัน', {
+                    position: "top-right",
+                    autoClose: 8000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             }
 
 
@@ -147,7 +158,18 @@ const QueueSuccess = () => {
 
 
 
-
+                <ToastContainer
+                    position="top-right"
+                    autoClose={8000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme='dark'
+                />
 
 
 
