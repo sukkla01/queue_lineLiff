@@ -21,6 +21,7 @@ const ReserveList = () => {
     const [picture, setPicture] = useState('')
     const [hn, setHn] = useState('')
     const [data, setData] = useState([])
+    const [profile, setProfile] = useState({})
 
 
    
