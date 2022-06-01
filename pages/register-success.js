@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import QRCode from "react-qr-code";
 
 const BASE_URL = config.BASE_URL
+const token = config.token
 
 const RegisterSuccess = () => {
 
@@ -20,7 +21,7 @@ const RegisterSuccess = () => {
 
     const getCid = async () => {
         try {
-            let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
+            let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
             console.log(res.data)
             setData(res.data)
         } catch (error) {

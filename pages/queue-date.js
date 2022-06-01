@@ -76,7 +76,7 @@ const QueueDate = () => {
         </div>
         {/* Profile */}
 
-        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว {dep}</h6>
+        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว </h6>
 
         <div className="site-calendar-demo-card" style={{ marginLeft: 15, marginRight: 10, borderRadius: 15 }}>
           <ConfigProvider locale={th_TH}>

@@ -7,6 +7,7 @@ import axios from 'axios'
 import config from '../config'
 
 const BASE_URL = config.BASE_URL
+const token = config.token
 
 const Queue = (value) => {
   const router = useRouter()
@@ -35,7 +36,7 @@ const Queue = (value) => {
 
   const getCid = async (userId) => {
     try {
-      let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
+      let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
       if (res.data.length > 0) {
         setHn(res.data[0].hn)
         setTname(res.data[0].tname)

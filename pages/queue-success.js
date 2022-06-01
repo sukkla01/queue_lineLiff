@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = config.BASE_URL
-
+const token = config.token
 
 const QueueSuccess = () => {
     const router = useRouter()
@@ -51,7 +51,7 @@ const QueueSuccess = () => {
             dep: dep,
         }
         try {
-            let res = await axios.post(`${BASE_URL}/add-reserve`, data)
+            let res = await axios.post(`${BASE_URL}/add-reserve`, data, { headers: { "token": token } })
 
             if (res.status == 200) {
                 router.push({
