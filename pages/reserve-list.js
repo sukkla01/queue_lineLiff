@@ -23,19 +23,28 @@ const ReserveList = () => {
     const [data, setData] = useState([])
 
 
+   
+
     useEffect(() => {
 
-        setName(localStorage.getItem('tname'))
-        setUserId(localStorage.getItem('userId'))
-        setPicture(localStorage.getItem('picture'))
-        setHn(localStorage.getItem('hn'))
+        localStorage.setItem('path', 'reserve-list');
+        async function getData() {
+          const liff = (await import('@line/liff')).default
+          await liff.ready
+          const profile = await liff.getProfile()
+          setProfile(profile)
+          localStorage.setItem('name', profile.displayName);
+          localStorage.setItem('userId', profile.userId);
+          localStorage.setItem('picture', profile.pictureUrl);
+    
+          getDataRe(profile.userId)
+        }
+        getData()
+        // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
+      },[])
 
-        getData(localStorage.getItem('userId'))
 
-    }, [])
-
-
-    const getData = async (userIdv) => {
+    const getDataRe = async (userIdv) => {
         try {
             let res = await axios.get(`${BASE_URL}/get-reserve/${userIdv}`)
             console.log(res.data)
