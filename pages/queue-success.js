@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
-import ProfilePage from '../component/ProfilePage'
 import { Button, message } from 'antd';
 import { useRouter } from 'next/router'
 import depData from '../data'
@@ -60,7 +59,7 @@ const QueueSuccess = () => {
                     query: { userId: userId },
                 })
             } else {
-                toast.warn('มีการจองงแล้วในวัน', {
+                toast.warn('มีการจองแล้วในวัน กรุณาเลือกวันอื่น', {
                     position: "bottom-center",
                     autoClose: 8000,
                     hideProgressBar: false,
