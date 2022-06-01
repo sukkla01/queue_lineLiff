@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import { useRouter } from 'next/router'
-
+import { Badge, Divider } from 'antd';
 
 import * as moment from 'moment';
 import 'moment/locale/th';
@@ -94,7 +94,7 @@ const ReserveList = () => {
                         </div>
                         <div className='col-8'>
                             <div className='row' style={{ fontSize: 15 }}>
-                                ชื่อ-สกุล : {name}
+                                ชื่อ-สกุล : {name} 
                             </div>
                             <div className='row' style={{ fontSize: 15, paddingTop: 10 }}>
                                 HN : {hn}
@@ -103,7 +103,7 @@ const ReserveList = () => {
                     </div>
                 </div>
                 {/* Profile */}
-                <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>รายการจอง {dep}</h6>
+                <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>รายการจอง  </h6>
                 {data.map((item, i) => {
                     return <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 80, borderRadius: 15, marginTop: 10 }} key={i}>
                         <div className='row' style={{ paddingTop: 5, paddingLeft: 10 }}>
@@ -113,7 +113,8 @@ const ReserveList = () => {
                             <div className='col-8'>
                                 <div>แผนก : {item.name}</div>
                                 <div style={{ marginTop: 2 }}>วันที่จอง : {moment(item.nextdate).format('ll')}</div>
-                                <div className='text-center' style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: 0 }}>รอการตรวจสอบ</div> </div>
+                                <Badge color={colort[parseInt(item.status)-1]} text="รอตรวจสอบ" />
+                                {/* <div className='text-center' style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: 0 }}>รอการตรวจสอบ</div> </div> */}
                             </div>
 
                         </div>
