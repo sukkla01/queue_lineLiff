@@ -6,6 +6,7 @@ import axios from 'axios'
 import config from '../config'
 
 const BASE_URL = config.BASE_URL
+const token = config.token
 
 const Register = () => {
     const router = useRouter()
@@ -35,7 +36,7 @@ const Register = () => {
 
     const getCid = async (userId) => {
         try {
-            let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`)
+            let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
 
             if (res.data.length > 0) {
                 router.push({
@@ -65,7 +66,7 @@ const Register = () => {
         } else {
 
             try {
-                let res = await axios.get(`${BASE_URL}/get-hn/${formData.cid}`)
+                let res = await axios.get(`${BASE_URL}/get-hn/${formData.cid}`, { headers: { "token": token } })
                 if (res.data.length == 0) {
                     setUAlertm('คุณยังไม่เคยมาโรงพยาบาลกรุณาติดต่อห้องบัตร')
                 } else {
