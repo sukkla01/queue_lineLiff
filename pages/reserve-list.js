@@ -82,7 +82,7 @@ const ReserveList = () => {
     }
 
 
-    const onDel =(id)=>{
+    const onDel = async (id)=>{
         let data = {
             id : id
         }
