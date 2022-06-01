@@ -132,7 +132,7 @@ const ReserveList = () => {
                             </div>
                             <div className='col-2' >
                                 {item.status == 1 ?
-                                <Popconfirm placement="top" title={'ต้องการลบหรือไม่'} onConfirm={ onDel(item.vn_reserve)} okText="ตกลง" cancelText="ไม่">
+                                <Popconfirm placement="top" title={'ต้องการลบหรือไม่'} onConfirm={()=> onDel(item.vn_reserve)} okText="ตกลง" cancelText="ไม่">
                                      <img src='./images/del.jpg' width={50} height={50} style={{ marginLeft: -20, marginTop: 10 }}  />
                                 </Popconfirm>
                                     : ''}
