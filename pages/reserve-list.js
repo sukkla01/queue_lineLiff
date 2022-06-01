@@ -20,7 +20,7 @@ const ReserveList = () => {
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
     const [hn, setHn] = useState('')
-    const [data, setData] = useState([{ 'aa': 12, 'ss': 66 }])
+    const [data, setData] = useState([])
     const [profile, setProfile] = useState({})
 
     const colort = ['#ffc400', '#00e676', '#f50057']
