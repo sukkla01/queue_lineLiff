@@ -113,7 +113,7 @@ const ReserveList = () => {
                             <div className='col-8'>
                                 <div>แผนก : {item.name}</div>
                                 <div style={{ marginTop: 5 }}>วันที่จอง : {moment(item.nextdate).format('ll')}</div>
-                                <div style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: -3 }}>รอการตรวจสอบ</div> </div>
+                                <div className='text-center' style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: -3 }}>รอการตรวจสอบ</div> </div>
                             </div>
 
                         </div>
