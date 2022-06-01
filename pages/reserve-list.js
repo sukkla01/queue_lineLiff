@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import { useRouter } from 'next/router'
-import { Badge, Divider } from 'antd';
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-
+import { Badge, Popconfirm } from 'antd';
 import * as moment from 'moment';
 import 'moment/locale/th';
 moment.locale('th')
@@ -43,7 +40,7 @@ const ReserveList = () => {
             getDataRe(profile.userId)
             getCid(profile.userId)
         }
-        getData()
+        // getData()
         // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
     }, [])
 
@@ -95,6 +92,7 @@ const ReserveList = () => {
         } catch (error) {
             console.log(error)
         }
+
     }
 
     return (
@@ -134,28 +132,10 @@ const ReserveList = () => {
                             </div>
                             <div className='col-2' >
                                 {item.status == 1 ?
-                                    <img src='./images/del.jpg' width={50} height={50} style={{ marginLeft: -20, marginTop: 10 }} onClick={
-                                        confirmAlert({
-                                            customUI: ({ onClose }) => {
-                                                return (
-                                                    <div className='custom-ui'>
-                                                        <h1>คุณต้องการลบหรือไม่?</h1>
-                                                        {/* <p>You want to delete this file?</p> */}
-                                                        <button onClick={onClose}>ไม่</button>
-                                                        <button
-                                                            onClick={() => {
-                                                                onDel(item.vn_reserve)
-                                                                onClose();
-                                                            }}
-                                                        >
-                                                            ตกลง
-                                                        </button>
-                                                    </div>
-                                                );
-                                            }
-                                        })
-
-                                    } /> : ''}
+                                <Popconfirm placement="top" title={'ต้องการลบหรือไม่'} onConfirm={ onDel(item.vn_reserve)} okText="ตกลง" cancelText="ไม่">
+                                     <img src='./images/del.jpg' width={50} height={50} style={{ marginLeft: -20, marginTop: 10 }}  />
+                                </Popconfirm>
+                                    : ''}
                             </div>
 
                         </div>
