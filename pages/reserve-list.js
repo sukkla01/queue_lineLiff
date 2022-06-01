@@ -40,7 +40,7 @@ const ReserveList = () => {
             getDataRe(profile.userId)
             getCid(profile.userId)
         }
-        // getData()
+        getData()
         // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
     }, [])
 
