@@ -71,7 +71,7 @@ const Register = () => {
                     setUAlertm('คุณยังไม่เคยมาโรงพยาบาลกรุณาติดต่อห้องบัตร')
                 } else {
                     try {
-                        let res = await axios.post(`${BASE_URL}/add-register`, data)
+                        let res = await axios.post(`${BASE_URL}/add-register`, data, { headers: { "token": token } })
                         console.log(res.data)
                         router.push('/success')
                     } catch (error) {
