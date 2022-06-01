@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavHeader from '../component/NavHeader'
 import ProfilePage from '../component/ProfilePage'
-import { Button } from 'antd';
+import { Button,message } from 'antd';
 import { useRouter } from 'next/router'
 import depData from '../data'
 import * as moment from 'moment';
@@ -50,10 +50,15 @@ const QueueSuccess = () => {
         }
         try {
             let res = await axios.post(`${BASE_URL}/add-reserve`, data)
-            router.push({
-                pathname: '/reserv-success',
-                query: { userId: userId },
-            })
+
+            if (res.status == 200) {
+                router.push({
+                    pathname: '/reserv-success',
+                    query: { userId: userId },
+                })
+            } else {
+                message.warning('มีการจองงแล้วในวัน');
+            }
 
 
         } catch (error) {
