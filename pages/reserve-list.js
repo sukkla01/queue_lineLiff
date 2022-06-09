@@ -23,6 +23,7 @@ const ReserveList = () => {
     const [profile, setProfile] = useState({})
 
     const colort = ['#ffc400', '#00e676', '#f50057']
+    const textStatus = ['รอเจ้าหน้าที่ลงทะเบียน', 'จองเรียบร้อย', '#f50057']
 
 
     useEffect(() => {
@@ -61,7 +62,7 @@ const ReserveList = () => {
             let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
             if (res.data.length > 0) {
                 setHn(res.data[0].hn)
-                setTname(res.data[0].tname)
+                setName(res.data[0].tname)
                 localStorage.setItem('tname', res.data[0].tname);
 
             } else {
@@ -127,7 +128,7 @@ const ReserveList = () => {
                             <div className='col-8'>
                                 <div>แผนก : {item.name}</div>
                                 <div style={{ marginTop: 2 }}>วันที่จอง : {moment(item.nextdate).format('ll')}</div>
-                                <Badge color={colort[parseInt(item.status) - 1]} text="รอตรวจสอบ" />
+                                <Badge color={colort[parseInt(item.status) - 1]} text={textStatus[parseInt(item.status) - 1]} />
                                 {/* <div className='text-center' style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: 0 }}>รอการตรวจสอบ</div> </div> */}
                             </div>
                             <div className='col-2' >
