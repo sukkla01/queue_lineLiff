@@ -72,7 +72,7 @@ const Queue = (value) => {
     if (selectId != 0) {
       router.push({
         pathname: '/queue-date',
-        query: { dep: selectId,profile : profile,tname : tname ,hn_:hn},
+        query: { dep: selectId,profile : JSON.stringify(profile),tname : tname ,hn_:hn},
       })
     }
 
