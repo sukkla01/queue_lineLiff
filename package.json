@@ -17,8 +17,10 @@
     "react": "18.0.0",
     "react-bootstrap": "^2.2.3",
     "react-dom": "18.0.0",
+    "react-loading": "^2.0.3",
     "react-qr-code": "^2.0.7",
-    "react-toastify": "^9.0.3"
+    "react-toastify": "^9.0.3",
+    "tachyons-components": "latest"
   },
   "devDependencies": {
     "eslint": "8.13.0",

@@ -4,9 +4,15 @@ import { Button, Radio } from 'antd';
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import config from '../config'
+import ReactLoading from 'react-loading';
+import styled from "tachyons-components";
 
 const BASE_URL = config.BASE_URL
 const token = config.token
+
+export const Section = styled('div')`
+flex flex-wrap content-center justify-center w-100 h-100`;
+
 
 const Register = () => {
     const router = useRouter()
@@ -14,6 +20,7 @@ const Register = () => {
     const [profile, setProfile] = useState({})
     const [alertM, setUAlertm] = useState("");
     const [status, setStatus] = useState("N");
+    const [isLoading, setIsLoading] = useState(true);
     const [formData, setFormData] = useState(
         {
             cid: '',
@@ -27,6 +34,7 @@ const Register = () => {
             const profile = await liff.getProfile()
             setProfile(profile)
             getCid(profile.userId)
+            setIsLoading(false)
 
         }
         getData()
@@ -95,9 +103,13 @@ const Register = () => {
         <div style={{ textAlign: "center" }}>
             <NavHeader />
 
-            <div style={{ paddingTop: '20%' }}>
+            <div style={{ paddingTop: '20%',textAlign : 'center' }}>
+
+                {isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> : 
+
+
                 <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
-                    <p></p>
+                    
                     <div className='text-center' style={{ marginTop: 0 }}>
                         <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>ลงทะเบียนเข้าใช้งาน</h4>
                     </div>
@@ -147,7 +159,7 @@ const Register = () => {
                             สมัครเข้าใช้งาน
                         </Button>
                     </div>
-                </div>
+                </div> }
             </div>
 
 
