@@ -6,12 +6,12 @@ import * as moment from 'moment';
 import 'moment/locale/th';
 moment.locale('th')
 import { Calendar, Button } from 'antd';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, Alert } from 'antd';
 import th_TH from 'antd/lib/locale/th_TH';
 
 const QueueDate = () => {
   const router = useRouter()
-  const { dep,profile,tname,hn_ } = router.query
+  const { dep, profile, tname, hn_ } = router.query
   const [dateShow, setSDateShow] = useState("");
   const [date, setDate] = useState("");
   const [name, setName] = useState('')
@@ -32,7 +32,7 @@ const QueueDate = () => {
     setPicture(JSON.parse(profile).pictureUrl)
     setHn(hn_)
 
-  },[])
+  }, [])
 
   function onPanelChange(value, mode) {
     console.log(moment(value).format('YYYY-MM-DD'));
@@ -49,7 +49,7 @@ const QueueDate = () => {
   const onNext = (value) => {
     router.push({
       pathname: '/queue-success',
-      query: { dep: dep, date: date,profile:profile,tname:tname,hn_:hn },
+      query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn },
     })
   }
 
@@ -80,6 +80,11 @@ const QueueDate = () => {
           </div>
         </div>
         {/* Profile */}
+
+        <div style={{ marginTop: 10, marginLeft: 15, marginRight: 10 }}>
+          <Alert message="เปิดบริการเฉพาะวัน จันทร์-อังคาร เวลา 17.30-20.30 น." type="info" showIcon />
+
+        </div>
 
         <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว </h6>
 
