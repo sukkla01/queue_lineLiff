@@ -11,7 +11,7 @@ import th_TH from 'antd/lib/locale/th_TH';
 
 const QueueDate = () => {
   const router = useRouter()
-  const { dep } = router.query
+  const { dep,profile,tname,hn_ } = router.query
   const [dateShow, setSDateShow] = useState("");
   const [date, setDate] = useState("");
   const [name, setName] = useState('')
@@ -23,10 +23,15 @@ const QueueDate = () => {
   useEffect(() => {
 
     // getData()
-    setName(localStorage.getItem('tname'))
-    setUserId(localStorage.getItem('userId'))
-    setPicture(localStorage.getItem('picture'))
-    setHn(localStorage.getItem('hn'))
+    // setName(localStorage.getItem('tname'))
+    // setUserId(localStorage.getItem('userId'))
+    // setPicture(localStorage.getItem('picture'))
+    // setHn(localStorage.getItem('hn'))
+    setName(tname)
+    setUserId(profile.userId)
+    setPicture(profile.pictureUrl)
+    setHn(hn_)
+
   },[])
 
   function onPanelChange(value, mode) {
@@ -44,7 +49,7 @@ const QueueDate = () => {
   const onNext = (value) => {
     router.push({
       pathname: '/queue-success',
-      query: { dep: dep, date: date },
+      query: { dep: dep, date: date,profile:profile,tname:tname,hn_:hn },
     })
   }
 

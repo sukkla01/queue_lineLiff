@@ -18,7 +18,7 @@ const token = config.token
 const QueueSuccess = () => {
     const router = useRouter()
     const [selectId, setSelectId] = useState(0)
-    const { dep, date } = router.query
+    const { date,dep,profile,tname,hn_ } = router.query
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
@@ -29,10 +29,15 @@ const QueueSuccess = () => {
     useEffect(() => {
 
         // getData()
-        setName(localStorage.getItem('tname'))
-        setUserId(localStorage.getItem('userId'))
-        setPicture(localStorage.getItem('picture'))
-        setHn(localStorage.getItem('hn'))
+        // setName(localStorage.getItem('tname'))
+        // setUserId(localStorage.getItem('userId'))
+        // setPicture(localStorage.getItem('picture'))
+        // setHn(localStorage.getItem('hn'))
+
+        setName(tname)
+        setUserId(profile.userId)
+        setPicture(profile.pictureUrl)
+        setHn(hn_)
         console.log(depData)
 
         depData.map((item, i) => {

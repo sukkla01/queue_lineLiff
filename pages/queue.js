@@ -5,9 +5,14 @@ import ProfilePage from '../component/ProfilePage'
 import { Button, Radio } from 'antd';
 import axios from 'axios'
 import config from '../config'
+import ReactLoading from 'react-loading';
+import styled from "tachyons-components";
 
 const BASE_URL = config.BASE_URL
 const token = config.token
+
+export const Section = styled('div')`
+flex flex-wrap content-center justify-center w-100 h-100`;
 
 const Queue = (value) => {
   const router = useRouter()
@@ -16,6 +21,8 @@ const Queue = (value) => {
   const [selectId, setSelectId] = useState(0)
   const [hn, setHn] = useState('')
   const [tname, setTname] = useState('')
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
 
     localStorage.setItem('path', 'queue');
@@ -29,9 +36,9 @@ const Queue = (value) => {
       localStorage.setItem('picture', profile.pictureUrl);
 
       getCid(profile.userId)
+
     }
     getData()
-    // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
   },[])
 
   const getCid = async (userId) => {
@@ -41,6 +48,8 @@ const Queue = (value) => {
         setHn(res.data[0].hn)
         setTname(res.data[0].tname)
         localStorage.setItem('tname', res.data[0].tname);
+
+        setIsLoading(false)
 
       } else {
 
@@ -63,7 +72,7 @@ const Queue = (value) => {
     if (selectId != 0) {
       router.push({
         pathname: '/queue-date',
-        query: { dep: selectId },
+        query: { dep: selectId,profile : profile,tname : tname ,hn_:hn},
       })
     }
 
@@ -104,6 +113,8 @@ const Queue = (value) => {
         {/* Profile */}
 
         <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแผนกจองคิว</h6>
+
+        { isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> : 
 
         <div className='row' style={{ paddingTop: 5, paddingLeft: 15, paddingRight: 15 }}>
 
@@ -150,7 +161,7 @@ const Queue = (value) => {
 
 
 
-        </div>
+        </div>  }
         {/* <div className="card green" style={{ marginTop: 50 }} onClick={() => onDep(1)}>
           <h1>แพทย์แผนไทย</h1>
         </div>
@@ -158,12 +169,12 @@ const Queue = (value) => {
           <h1>ทันตกรรม</h1>
         </div> */}
       </div>
-
+      {isLoading ? '' : 
       <div style={{ marginTop: 50, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
         <Button type={selectId != 0 ? "primary" : "default"} shape="round" block size={'large'} onClick={onDep} >
           ตกลง
         </Button>
-      </div>
+      </div>  }
 
     </div>
   )
