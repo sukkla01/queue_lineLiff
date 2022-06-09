@@ -49,7 +49,7 @@ const QueueDate = () => {
   const onNext = (value) => {
     router.push({
       pathname: '/queue-success',
-      query: { dep: dep, date: date,profile:JSON.stringify(profile),tname:tname,hn_:hn },
+      query: { dep: dep, date: date,profile:profile,tname:tname,hn_:hn },
     })
   }
 
