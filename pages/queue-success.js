@@ -125,7 +125,7 @@ const QueueSuccess = () => {
                             แผนก : {depName}
                         </div>
                         <div style={{ fontSize: 15, paddingTop: 10 }}>
-                            วันที่จอง : {moment(date).format('ll')}
+                            วันที่จอง : {moment(date).add(543, 'year').format('LL')}
                         </div>
                     </div>
                     {/* <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>

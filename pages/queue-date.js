@@ -36,7 +36,7 @@ const QueueDate = () => {
 
   function onPanelChange(value, mode) {
     console.log(moment(value).format('YYYY-MM-DD'));
-    setSDateShow(moment(value).format('ll'))
+    setSDateShow(moment(value).add(543, 'year').format('LL'))
     setDate(moment(value).format('YYYY-MM-DD'))
   }
 
