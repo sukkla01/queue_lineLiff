@@ -35,8 +35,8 @@ const QueueSuccess = () => {
         // setHn(localStorage.getItem('hn'))
 
         setName(tname)
-        setUserId(profile.userId)
-        setPicture(profile.pictureUrl)
+        setUserId(JSON.parse(profile).userId)
+        setPicture(JSON.parse(profile).pictureUrl)
         setHn(hn_)
         console.log(depData)
 
