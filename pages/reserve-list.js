@@ -7,9 +7,14 @@ import 'moment/locale/th';
 moment.locale('th')
 import axios from 'axios'
 import config from '../config'
+import ReactLoading from 'react-loading';
+import styled from "tachyons-components";
 
 const BASE_URL = config.BASE_URL
 const token = config.token
+
+export const Section = styled('div')`
+flex flex-wrap content-center justify-center w-100 h-100`;
 
 const ReserveList = () => {
     const router = useRouter()
@@ -21,6 +26,7 @@ const ReserveList = () => {
     const [hn, setHn] = useState('')
     const [data, setData] = useState([])
     const [profile, setProfile] = useState({})
+    const [isLoading, setIsLoading] = useState(true);
 
     const colort = ['#ffc400', '#00e676', '#f50057']
     const textStatus = ['รอเจ้าหน้าที่ลงทะเบียน', 'จองเรียบร้อย', '#f50057']
@@ -51,6 +57,7 @@ const ReserveList = () => {
             let res = await axios.get(`${BASE_URL}/get-reserve/${userIdv}`, { headers: { "token": token } })
             console.log(res.data)
             setData(res.data)
+            setIsLoading(false)
 
         } catch (error) {
             console.log(error)
@@ -118,8 +125,9 @@ const ReserveList = () => {
                     </div>
                 </div>
                 {/* Profile */}
-                <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>รายการจอง  </h6>
-                {data.map((item, i) => {
+                <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>รายการจอง  </h6> 
+                
+                { isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> :    data.map((item, i) => {
                     return <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 80, borderRadius: 15, marginTop: 10 }} key={i}>
                         <div className='row' style={{ paddingTop: 5, paddingLeft: 10 }}>
                             <div className='col-2'>
@@ -141,7 +149,7 @@ const ReserveList = () => {
 
                         </div>
                     </div>
-                })}
+                })    }
 
             </div>
         </div>
