@@ -21,7 +21,7 @@ const Queue = (value) => {
   const [selectId, setSelectId] = useState(0)
   const [hn, setHn] = useState('')
   const [tname, setTname] = useState('')
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
 
@@ -170,7 +170,7 @@ const Queue = (value) => {
         </div> */}
       </div>
       {isLoading ? '' : 
-      <div style={{ marginTop: 50, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
+      <div style={{ marginTop: 30, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
         <Button type={selectId != 0 ? "primary" : "default"} shape="round" block size={'large'} onClick={onDep} >
           ตกลง
         </Button>

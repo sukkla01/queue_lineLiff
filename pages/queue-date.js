@@ -21,6 +21,15 @@ const QueueDate = () => {
 
 
   useEffect(() => {
+    const d = new Date();
+    let day = d.getDay();
+    let d_c = moment(d).format('YYYY-MM-DD')
+    if (day == 1 || day == 2) {
+      setDate(d_c)
+      setSDateShow(moment(d_c).add(543, 'year').format('LL'))
+    } else {
+      setSDateShow('ไม่เปิดบริการ กรุณาเลือกวันอื่น')
+    }
 
     // getData()
     // setName(localStorage.getItem('tname'))
@@ -35,9 +44,20 @@ const QueueDate = () => {
   }, [])
 
   function onPanelChange(value, mode) {
-    console.log(moment(value).format('YYYY-MM-DD'));
-    setSDateShow(moment(value).add(543, 'year').format('LL'))
-    setDate(moment(value).format('YYYY-MM-DD'))
+
+    const d = new Date(value);
+    let day = d.getDay();
+    console.log(day)
+
+    if (day == 1 || day == 2) {
+      console.log(moment(value).format('YYYY-MM-DD'));
+      setSDateShow(moment(value).add(543, 'year').format('LL'))
+      setDate(moment(value).format('YYYY-MM-DD'))
+    } else {
+      setSDateShow('ไม่เปิดบริการ กรุณาเลือกวันอื่น')
+    }
+
+
   }
 
   const onBack = () => {
@@ -47,10 +67,13 @@ const QueueDate = () => {
   }
 
   const onNext = (value) => {
-    router.push({
-      pathname: '/queue-success',
-      query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn },
-    })
+    if (dateShow != 'ไม่เปิดบริการ กรุณาเลือกวันอื่น') {
+      router.push({
+        pathname: '/queue-success',
+        query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn },
+      })
+    }
+
   }
 
 
@@ -86,7 +109,7 @@ const QueueDate = () => {
 
         </div>
 
-        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว </h6>
+        <h6 style={{ color: 'black', paddingTop: 15, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว </h6>
 
         <div className="site-calendar-demo-card" style={{ marginLeft: 15, marginRight: 10, borderRadius: 15 }}>
           <ConfigProvider locale={th_TH}>
@@ -97,11 +120,13 @@ const QueueDate = () => {
           </ConfigProvider>
         </div>
 
-        <div style={{ marginTop: 20 }}>
-          <p style={{ fontSize: 20 }} className="text-center">{dateShow}</p>
+        <div style={{ marginTop: 15, marginLeft: 15, marginRight: 10 }}>
+          <p style={{ fontSize: 20 }} className="text-center">
+            <Alert message={dateShow} type={dateShow == 'ไม่เปิดบริการ กรุณาเลือกวันอื่น' ? "error" : "success"} showIcon />
+          </p>
         </div>
 
-        <div className='row' style={{ marginTop: 50, marginLeft: 10, marginRight: 10, marginBottom: 100 }} >
+        <div className='row' style={{ marginTop: 20, marginLeft: 10, marginRight: 10, marginBottom: 100 }} >
           <div className='col-6'>
             <Button type={"default"} shape="round" block size={'large'} onClick={onBack} >
               กลับ
