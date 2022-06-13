@@ -26,7 +26,7 @@ const ReserveList = () => {
     const [hn, setHn] = useState('')
     const [data, setData] = useState([])
     const [profile, setProfile] = useState({})
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const colort = ['#ffc400', '#00e676', '#f50057']
     const textStatus = ['รอเจ้าหน้าที่ลงทะเบียน', 'จองเรียบร้อย', '#f50057']
@@ -47,7 +47,7 @@ const ReserveList = () => {
             getDataRe(profile.userId)
             getCid(profile.userId)
         }
-        getData()
+        // getData()
         // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
         // getDataRe('U2c04ba314d6649a7f6f2cc3b554b0ad9')
     }, [])
