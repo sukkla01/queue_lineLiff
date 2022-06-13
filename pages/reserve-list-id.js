@@ -23,7 +23,7 @@ const ReserveListId = () => {
 
     const getCid = async () => {
         try {
-            let res = await axios.get(`${BASE_URL}/get-vn/20220610153441`, { headers: { "token": token } })
+            let res = await axios.get(`${BASE_URL}/get-vn/${vn}`, { headers: { "token": token } })
             console.log(res.data)
             setData(res.data)
         } catch (error) {
