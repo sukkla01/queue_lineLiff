@@ -47,9 +47,8 @@ const ReserveList = () => {
             getDataRe(profile.userId)
             getCid(profile.userId)
         }
-        // getData()
+        getData()
         // getCid('U2c04ba314d6649a7f6f2cc3b554b0ad9')
-        // getDataRe('U2c04ba314d6649a7f6f2cc3b554b0ad9')
     }, [])
 
 
@@ -90,6 +89,18 @@ const ReserveList = () => {
     }
 
 
+    const onSelect = (vn) => {
+
+
+        router.push({
+            pathname: '/reserve-list-id',
+            query: { vn: vn },
+        })
+
+
+
+    }
+
     const onDel = async (id) => {
         let data = {
             id: id
@@ -103,19 +114,6 @@ const ReserveList = () => {
         }
 
     }
-
-    const onSelect = (vn) => {
-
-
-        router.push({
-            pathname: '/reserve-list-id',
-            query: { vn: vn },
-        })
-
-
-
-    }
-
 
     return (
         <div>
@@ -139,10 +137,10 @@ const ReserveList = () => {
                     </div>
                 </div>
                 {/* Profile */}
-                <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>รายการจอง  </h6>
-
-                {isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> : data.map((item, i) => {
-                    return <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 80, borderRadius: 15, marginTop: 10 }} key={i} onClick={() => onSelect(item.vn_reserve)}>
+                <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>รายการจอง  </h6> 
+                
+                { isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> :    data.map((item, i) => {
+                    return <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 80, borderRadius: 15, marginTop: 10 }} key={i}  onClick={() => onSelect(item.vn_reserve)}>
                         <div className='row' style={{ paddingTop: 5, paddingLeft: 10 }}>
                             <div className='col-2'>
                                 <img src='./images/calendar.gif' width={50} height={50} style={{ borderRadius: '50%', marginTop: 10 }} />
@@ -155,15 +153,15 @@ const ReserveList = () => {
                             </div>
                             <div className='col-2' >
                                 {item.status == 1 ?
-                                    <Popconfirm placement="leftBottom" title={'ต้องการลบหรือไม่'} onConfirm={() => onDel(item.vn_reserve)} okText="ตกลง" cancelText="ไม่">
-                                        <img src='./images/del.jpg' width={50} height={50} style={{ marginLeft: -20, marginTop: 10 }} />
-                                    </Popconfirm>
+                                <Popconfirm placement="leftBottom" title={'ต้องการลบหรือไม่'} onConfirm={()=> onDel(item.vn_reserve)} okText="ตกลง" cancelText="ไม่">
+                                     <img src='./images/del.jpg' width={50} height={50} style={{ marginLeft: -20, marginTop: 10 }}  />
+                                </Popconfirm>
                                     : ''}
                             </div>
 
                         </div>
                     </div>
-                })}
+                })    }
 
             </div>
         </div>
