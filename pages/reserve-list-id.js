@@ -23,7 +23,7 @@ const ReserveListId = () => {
 
     const getCid = async () => {
         try {
-            let res = await axios.get(`${BASE_URL}/get-vn/${vn}`, { headers: { "token": token } })
+            let res = await axios.get(`${BASE_URL}/get-vn/20220610153441`, { headers: { "token": token } })
             console.log(res.data)
             setData(res.data)
         } catch (error) {
@@ -42,16 +42,17 @@ const ReserveListId = () => {
                     <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 530, borderRadius: 15 }}>
                         <p></p>
                         <div className='text-center' style={{ marginTop: 0 }}>
-                            <h4 style={{ color: '#3f51b5', paddingTop: 20 }}>รายละเอียดการจอง</h4>
-                            <img src={data[0].picture} width={80} height={80} style={{ borderRadius: '50%', marginTop:20,marginBottom:20 }} />
-                            <p style={{ marginTop:10,fontSize:16  }}>{data[0].tname}</p>
-                            <p style={{ marginTop:-10,fontSize:30 }}>{data[0].hn}</p>
+                            <h4 style={{ color: '#3f51b5', paddingTop: 15 }}>รายละเอียดการจอง</h4>
+                            <img src={data[0].picture} width={70} height={70} style={{ borderRadius: '50%', marginTop:5,marginBottom:20 }} />
+                            <p style={{ marginTop:0,fontSize:16  }}>{data[0].tname}</p>
+                            <p style={{ marginTop:-10,fontSize:16 }}>{data[0].hn}</p>
+                            <p style={{ marginTop:-10,fontSize:30 }}>{data[0].queue}</p>
 
-                            <p style={{ marginTop:10,fontSize:16  }}>วันที่จอง : {moment(data[0].nextdate).add(543, 'year').format('LL')}</p>
-                            <p style={{ marginTop:10,fontSize:16  }}>แผนก : {data[0].dname}</p>
+                            <p style={{ marginTop:2,fontSize:16  }}>วันที่จอง : {moment(data[0].nextdate).add(543, 'year').format('LL')}</p>
+                            <p style={{ marginTop:-10,fontSize:16,marginBottom:20  }}>แผนก : {data[0].dname}</p>
 
 
-                            <QRCode value={data[0].vn_reserve}  size ={120}/>
+                            <QRCode value={data[0].vn_reserve}  size ={120} />
                         </div>
 
 
