@@ -8,6 +8,11 @@ moment.locale('th')
 import { Calendar, Button } from 'antd';
 import { ConfigProvider, Alert } from 'antd';
 import th_TH from 'antd/lib/locale/th_TH';
+import axios from 'axios'
+import config from '../config'
+
+const BASE_URL = config.BASE_URL
+const token = config.token
 
 const QueueDate = () => {
   const router = useRouter()
@@ -18,6 +23,7 @@ const QueueDate = () => {
   const [userId, setUserId] = useState('')
   const [picture, setPicture] = useState('')
   const [hn, setHn] = useState('')
+  const [IsNext, setIsNext] = useState(false)
 
 
   useEffect(() => {
@@ -43,18 +49,43 @@ const QueueDate = () => {
 
   }, [])
 
-  function onPanelChange(value, mode) {
+  async function onPanelChange(value, mode) {
 
     const d = new Date(value);
     let day = d.getDay();
-    console.log(day)
+    let nextdate = moment(value).format('YYYY-MM-DD')
 
     if (day == 1 || day == 2) {
-      console.log(moment(value).format('YYYY-MM-DD'));
-      setSDateShow(moment(value).add(543, 'year').format('LL'))
-      setDate(moment(value).format('YYYY-MM-DD'))
+
+
+      try {
+        let res = await axios.get(`${BASE_URL}/get-dep-limit/${nextdate}/${dep}`, { headers: { "token": token } })
+        console.log(res.data)
+        if (res.data.length == 0) {
+          setSDateShow(moment(value).add(543, 'year').format('LL'))
+          setDate(moment(value).format('YYYY-MM-DD'))
+          setIsNext(true)
+        } else {
+          if (parseInt(res.data[0].tcount) <= res.data[0].max_limit) {
+            setSDateShow(moment(value).add(543, 'year').format('LL'))
+            setDate(moment(value).format('YYYY-MM-DD'))
+            setIsNext(true)
+          }else{
+            setSDateShow('เต็มแล้ว')
+            setIsNext(false)
+          }
+
+        }
+        // setData(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+
+
+
     } else {
       setSDateShow('ไม่เปิดบริการ กรุณาเลือกวันอื่น')
+      setIsNext(false)
     }
 
 
@@ -67,11 +98,14 @@ const QueueDate = () => {
   }
 
   const onNext = (value) => {
-    if (dateShow != 'ไม่เปิดบริการ กรุณาเลือกวันอื่น') {
+    if (IsNext) {
       router.push({
         pathname: '/queue-success',
         query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn },
       })
+    }else{
+
+      console.log('gg')
     }
 
   }
@@ -122,7 +156,7 @@ const QueueDate = () => {
 
         <div style={{ marginTop: 15, marginLeft: 15, marginRight: 10 }}>
           <p style={{ fontSize: 20 }} className="text-center">
-            <Alert message={dateShow} type={dateShow == 'ไม่เปิดบริการ กรุณาเลือกวันอื่น' ? "error" : "success"} showIcon />
+            <Alert message={dateShow} type={dateShow == 'ไม่เปิดบริการ กรุณาเลือกวันอื่น' || dateShow == 'เต็มแล้ว' ? "error" : "success"} showIcon />
           </p>
         </div>
 
