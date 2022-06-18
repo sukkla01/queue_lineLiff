@@ -119,7 +119,7 @@ const ReserveList = () => {
         <div>
             <NavHeader />
 
-            <div style={{ paddingTop: '20%' }}>
+            <div style={{ paddingTop: '17%' }}>
                 <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
                     <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
                         <div className='col-4'>
