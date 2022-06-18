@@ -117,7 +117,7 @@ const QueueDate = () => {
     <div>
       <NavHeader />
 
-      <div style={{ paddingTop: '20%' }}>
+      <div style={{ paddingTop: '17%' }}>
 
         {/* Profile */}
         <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
@@ -160,8 +160,8 @@ const QueueDate = () => {
           </p>
         </div>
 
-        <div className='row' style={{ marginTop: 20, marginLeft: 10, marginRight: 10, marginBottom: 100 }} >
-          <div className='col-6'>
+        <div className='row' style={{ marginTop: 30, marginLeft: 10, marginRight: 10, marginBottom: 200 }} >
+          <div className='col-6' style={{ marginBottom: 100 }}>
             <Button type={"default"} shape="round" block size={'large'} onClick={onBack} >
               กลับ
             </Button>
