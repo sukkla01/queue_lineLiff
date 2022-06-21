@@ -13,7 +13,7 @@ const ReservSuccess = () => {
                         </div>
                         <img src={'./images/shield.gif'} width={80} height={80} style={{ borderRadius: '50%',marginTop:20 }} />
                     </div>
-                    <button onClick={ window.close() }>close</button>
+                    {/* <button onClick={ window.close() }>close</button> */}
                 </div>
             </div>
         </div>
