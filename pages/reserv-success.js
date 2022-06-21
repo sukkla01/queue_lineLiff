@@ -8,7 +8,9 @@ const ReservSuccess = () => {
         
     }, []);
     const exit = () => {
-        window.close()
+        router.beforeLeavingPage(() => {
+            // my callback
+        })
 
     }
     return (
