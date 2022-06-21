@@ -1,7 +1,16 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import NavHeader from '../component/NavHeader'
+import { useRouter } from 'next/router'
 
 const ReservSuccess = () => {
+    const router = useRouter()
+    useEffect(() => {
+        
+    }, []);
+    const exit = () => {
+        window.close()
+
+    }
     return (
         <div>
             <NavHeader />
@@ -11,9 +20,9 @@ const ReservSuccess = () => {
                         <div style={{ fontSize: 17, paddingTop: 20, fontWeight: 'bold' }}>
                             จองเรียบร้อยแล้ว
                         </div>
-                        <img src={'./images/shield.gif'} width={80} height={80} style={{ borderRadius: '50%',marginTop:20 }} />
+                        <img src={'./images/shield.gif'} width={80} height={80} style={{ borderRadius: '50%', marginTop: 20 }} />
                     </div>
-                    {/* <button onClick={ window.close() }>close</button> */}
+                    <button onClick={exit}>closecx</button>
                 </div>
             </div>
         </div>
