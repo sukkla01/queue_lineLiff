@@ -49,7 +49,7 @@ const QueueSuccess = () => {
     }, [])
 
 
-    const onSubmit = async (userId) => {
+    const onSubmit = async () => {
         let data = {
             hn: hn,
             nextdate: date,
