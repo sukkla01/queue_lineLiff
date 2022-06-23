@@ -54,7 +54,7 @@ const QueueSuccess = () => {
             hn: hn,
             nextdate: date,
             dep: dep,
-            userId 
+            userId : userId
         }
         try {
             let res = await axios.post(`${BASE_URL}/add-reserve`, data, { headers: { "token": token } })
