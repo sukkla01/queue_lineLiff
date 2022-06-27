@@ -96,7 +96,7 @@ const QueueTime = () => {
                 <div className='row'>
                     {data.map((item, i) => {
                         console.log(item)
-                        return <div className='col-3' key={i} >
+                        return <div className='col-4' key={i} >
                             <div className='text-center' style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 30, width: 100, borderRadius: 15, marginTop: 15, borderColor: selectId == item.ttime ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}
                                 onClick={() => onSelect(item.ttime)}
                             >
