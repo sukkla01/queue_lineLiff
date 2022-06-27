@@ -32,7 +32,7 @@ const ReservSuccess = (props) => {
                         </div>
 
                     </div>
-                    <Button type="primary" shape="round" block size={'large'} onClick={closeWindows} style={{ marginTop: 10 }} >
+                    <Button type="danger" shape="round" block size={'large'} onClick={closeWindows} style={{ marginTop: 10 }} >
                         ปิด
                     </Button>
                 </div>
