@@ -14,15 +14,19 @@ const Success = () => {
     return (
         <div>
             <NavHeader />
-            <div className='text-center' >
-                <div className='text-center' style={{ marginTop: 100 }}>
-                    <h4 style={{ color: '#3f51b5' }}>สมัครเรียบร้อยแล้ว </h4>
+            <div style={{ paddingTop: '20%' }}>
+                <div className='container'>
 
-                </div>
-                <img src='./images/shield.gif' width={100} />
-                <div style={{ marginTop: 50, marginLeft: 20, marginRight: 20 }} >
+                    <div style={{ backgroundColor: 'white', height: 200, borderRadius: 15 }}>
+                        <div className='text-center' style={{ marginTop: 0 }}>
+                            <div style={{ fontSize: 17, paddingTop: 20, fontWeight: 'bold' }}>
+                                สมัครเรียบร้อยแล้ว
+                            </div>
+                            <img src={'./images/shield.gif'} width={80} height={80} style={{ borderRadius: '50%', marginTop: 20 }} />
+                        </div>
 
-                    <Button type="primary" shape="round" block size={'large'} onClick={closeWindows} >
+                    </div>
+                    <Button type="primary" shape="round" block size={'large'} onClick={closeWindows} style={{ marginTop: 10 }} >
                         ปิด
                     </Button>
                 </div>
