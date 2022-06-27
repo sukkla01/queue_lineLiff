@@ -8,17 +8,18 @@ const liffId = process.env.NEXT_PUBLIC_LIFF_ID
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
-  const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
-  const params = new URLSearchParams(queryString);
-  const id = params.get('id');
+
   // const { param } = router.query
 
   useEffect(() => {
+    const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
+    const params = new URLSearchParams(queryString);
+    const id = params.get('id');
     alert(id)
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
-      alert( JSON.stringify(router.query))
+      alert(JSON.stringify(router.query))
 
       try {
         await liff.init({ liffId })
@@ -28,18 +29,18 @@ function MyApp({ Component, pageProps }) {
       }
 
       if (!liff.isLoggedIn()) {
-        let path  = localStorage.getItem('path')
-           
+        let path = localStorage.getItem('path')
+
         //xxxxx
         // liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${path}` })
-         
 
-        
+
+
       }
     }
     fetchData()
   }, [])
-  
+
   return <Component {...pageProps} />
 }
 
