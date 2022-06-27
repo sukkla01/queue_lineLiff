@@ -28,9 +28,6 @@ export default function Home() {
     // }
   }, [])
   return (
-    <div>
-      <Button type="primary">Primary Button</Button>
-      test index
-    </div>
+    <div className='text-center'>กำลัง login.......</div>
   )
 }
