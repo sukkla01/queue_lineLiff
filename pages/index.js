@@ -24,6 +24,9 @@ export default function Home() {
     // }
   }, [])
   return (
-    <div>  </div>
+    <div>
+      <Button type="primary">Primary Button</Button>
+      test index
+    </div>
   )
 }
