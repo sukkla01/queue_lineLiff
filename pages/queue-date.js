@@ -34,6 +34,7 @@ const QueueDate = () => {
     if (day == 1 || day == 2) {
       setDate(d_c)
       setSDateShow(moment(d_c).add(543, 'year').format('LL'))
+      setIsNext(true)
     } else {
       setSDateShow('ไม่เปิดบริการ กรุณาเลือกวันอื่น')
     }
@@ -129,12 +130,6 @@ const QueueDate = () => {
 
 
 
-  const tclose=()=>{
-    window.open('','_parent','');
-    window.close();
-  }
-
-
 
   return (
     <div>
@@ -194,7 +189,6 @@ const QueueDate = () => {
             <Button type={"primary"} shape="round" block size={'large'} onClick={onNext} >
               ถัดไป
             </Button>
-            <a href="#" onClick={tclose}>Close Window</a>
           </div>
 
         </div>

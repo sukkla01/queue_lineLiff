@@ -148,16 +148,17 @@ const ReserveList = () => {
                             <div className='col-8'>
                                 <div>แผนก : {item.name}</div>
                                 <div style={{ marginTop: 2 }}>วันที่จอง : {moment(item.nextdate).add(543, 'year').format('LL')}</div>
-                                <Badge color={colort[parseInt(item.status) - 1]} text={textStatus[parseInt(item.status) - 1]} />
+                                {/* <Badge color={colort[parseInt(item.status) - 1]} text={textStatus[parseInt(item.status) - 1]} /> */}
+                                <Badge color={colort[1]} text={textStatus[1]} />
                                 {/* <div className='text-center' style={{ backgroundColor:colort[parseInt(item.status)-1], height: 20, borderRadius: 15, width: 130 }}><div style={{ marginTop: 0 }}>รอการตรวจสอบ</div> </div> */}
                             </div>
-                            <div className='col-2' >
+                            {/* <div className='col-2' >
                                 {item.status == 1 ?
                                 <Popconfirm placement="leftBottom" title={'ต้องการลบหรือไม่'} onConfirm={()=> onDel(item.vn_reserve)} okText="ตกลง" cancelText="ไม่">
                                      <img src='./images/del.jpg' width={50} height={50} style={{ marginLeft: -20, marginTop: 10 }}  />
                                 </Popconfirm>
                                     : ''}
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>

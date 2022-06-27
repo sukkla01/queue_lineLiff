@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import NavHeader from '../component/NavHeader'
 import { useRouter } from 'next/router'
+import { Button, Radio } from 'antd';
 
 const ReservSuccess = (props) => {
     const router = useRouter()
@@ -11,30 +12,10 @@ const ReservSuccess = (props) => {
         e.returnValue = "";
       };
 
-    const exit = () => {
-        if (window) {
-            router.beforePopState(() => {
-              //if (componentShouldBeSavedAsDraft(componentData)) {
-              const result = window.confirm("are you sure you want to leave?");
-              if (!result) {
-                window.history.pushState("/", "");
-                router.push("/marketplace/upload-component");
-              }
-              console.log(goAway); // this value is always "" even though set differently in code. 
-              return result;
-            });
-            window.onbeforeunload = browserTabcloseHandler;
-          }
-          //Router.events.on("routeChangeStart", handleRouteChange);
-       
-          return () => {
-            if (window) {
-              window.onbeforeunload = null;
-            }
-            router.beforePopState(() => {
-              return true;
-            });
-          };
+      const closeWindows = async () => {
+        const liff = (await import('@line/liff')).default
+        await liff.ready
+        liff.closeWindow()
     }
     return (
         <div>
@@ -47,7 +28,9 @@ const ReservSuccess = (props) => {
                         </div>
                         <img src={'./images/shield.gif'} width={80} height={80} style={{ borderRadius: '50%', marginTop: 20 }} />
                     </div>
-                    <button onClick={exit}>closecx</button>
+                    <Button type="primary" shape="round" block size={'large'} onClick={closeWindows} >
+                        ปิด
+                    </Button>
                 </div>
             </div>
         </div>
