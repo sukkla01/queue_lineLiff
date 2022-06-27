@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'antd/dist/antd.css';
 import { useRouter } from 'next/router'
 const liffId = process.env.NEXT_PUBLIC_LIFF_ID
@@ -32,21 +32,22 @@ function MyApp({ Component, pageProps }) {
 
       if (!liff.isLoggedIn()) {
         let path = localStorage.getItem('path')
-         liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${key}` })
+        await liff.login({ redirectUri: `https://queue-ss.diligentsoftinter.com/${key}` })
 
-      }else{
+      } else {
         router.push({
           pathname: `/${key}`,
         })
       }
 
-
       setIsLoad(true)
+
     }
     fetchData()
+
   }, [])
 
-  return  setIsLoad ?  <Component {...pageProps} /> : <></>
+  return isLoad ? <Component {...pageProps} /> : <></>
 }
 
 export default MyApp
