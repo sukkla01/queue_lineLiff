@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
     const key = params.get('key');
     // alert(queryString)
     // alert(params)
-    // alert(id)
+    alert(key)
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
