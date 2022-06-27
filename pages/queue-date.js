@@ -25,6 +25,7 @@ const QueueDate = () => {
   const [hn, setHn] = useState('')
   const [IsNext, setIsNext] = useState(false)
   const [countSlot, setCountSlot] = useState(0)
+  const [DataDepName, setDataDepName] = useState('')
 
 
   useEffect(() => {
@@ -40,6 +41,7 @@ const QueueDate = () => {
     }
 
     getSlot()
+    getDepId()
     // getData()
     // setName(localStorage.getItem('tname'))
     // setUserId(localStorage.getItem('userId'))
@@ -57,6 +59,17 @@ const QueueDate = () => {
     try {
       let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
       setCountSlot(res.data.length)
+
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+  const getDepId = async () => {
+    try {
+      let res = await axios.get(`${BASE_URL}/get-dep-id/${dep}`, { headers: { "token": token } })
+      setDataDepName(res.data[0].name)
+
 
     } catch (error) {
       console.log(error)
@@ -161,7 +174,7 @@ const QueueDate = () => {
 
         </div>
 
-        <h6 style={{ color: 'black', paddingTop: 15, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว  {'(' + countSlot[0].name + ')'}</h6>
+        <h6 style={{ color: 'black', paddingTop: 15, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว  {'(' + DataDepName + ')'}</h6>
 
         <div className="site-calendar-demo-card" style={{ marginLeft: 15, marginRight: 10, borderRadius: 15 }}>
           <ConfigProvider locale={th_TH}>
