@@ -15,11 +15,13 @@ function MyApp({ Component, pageProps }) {
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
     const params = new URLSearchParams(queryString);
     const id = params.get('id');
+    alert(queryString)
+    alert(params)
     alert(id)
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
-      alert(JSON.stringify(router.query))
+      // alert(JSON.stringify(router.query))
 
       try {
         await liff.init({ liffId })
