@@ -9,10 +9,11 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    
-    let path = localStorage.getItem('path')
+    const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
+    const params = new URLSearchParams(queryString);
+    const tkey = params.get('key');
     // alert(path)
-    router.push(`/${path}`)
+    router.push(`/${tkey}`)
 
 
 

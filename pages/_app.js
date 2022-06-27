@@ -13,9 +13,7 @@ function MyApp({ Component, pageProps }) {
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
     const params = new URLSearchParams(queryString);
     const tkey = params.get('key');
-    alert(tkey)
-    // localStorage.setItem('path',tkey)
-    localStorage.setItem('bgcolor', 'red');
+   
 
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
