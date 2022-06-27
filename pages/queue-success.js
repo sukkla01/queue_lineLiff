@@ -40,14 +40,26 @@ const QueueSuccess = () => {
         setHn(hn_)
         console.log(depData)
 
-        depData.map((item, i) => {
-            console.log(item.id)
-            dep == item.id ? setDepName(item.name) : ''
-        })
-
+       
+        getDep()
 
     }, [])
 
+
+    const getDep = async (userId) => {
+        try {
+          let res = await axios.get(`${BASE_URL}/get-dep-all`, { headers: { "token": token } })
+          if (res.data.length > 0) {
+            res.data.map((item, i) => {
+                console.log(item.id)
+                dep == item.id ? setDepName(item.name) : ''
+            })
+    
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      }
 
     const onSubmit = async () => {
         let data = {
