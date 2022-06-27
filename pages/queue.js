@@ -137,7 +137,7 @@ const Queue = (value) => {
           <div className='row' >
 
             {data.map((item,i) => {
-              return <div className='col-6 mt-2'  >
+              return <div className='col-6 mt-2' key={i} >
                 <div onClick={() => onSelect(item.id)} className='text-center' style={{ backgroundColor: 'white', height: 100, borderRadius: 15, borderColor: selectId == item.id ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}>
                   {/* <div className='row'> */}
                   <img src={'./images/hos.gif'} width={40} height={40} style={{ marginTop: 10 }} />
