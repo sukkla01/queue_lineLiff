@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useEffect, useState } from 'react'
 import 'antd/dist/antd.css';
 import { useRouter } from 'next/router'
-import { NextResponse, NextRequest } from 'next/server'
 const liffId = process.env.NEXT_PUBLIC_LIFF_ID
 
 function MyApp({ Component, pageProps }) {
@@ -39,7 +38,7 @@ function MyApp({ Component, pageProps }) {
       } else {
         alert(key)
         let tpath = `/${key}`
-        NextResponse.redirect(tpath)
+        router.push(tpath)
       }
 
       setIsLoad(true)
