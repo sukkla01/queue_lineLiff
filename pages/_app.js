@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
        
 
         //xxxxx
-        liff.login({ redirectUri: `https://queue-ss.diligentsoftinter.com/${tkey}` })
+        // liff.login({ redirectUri: `https://queue-ss.diligentsoftinter.com/${tkey}` })
 
 
       }

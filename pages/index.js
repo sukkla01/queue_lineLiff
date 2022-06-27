@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { Avatar, List, Skeleton, Switch } from 'antd';
 import LoadingSkeleton from '../component/LoadingSkeleton'
+import NavHeader from '../component/NavHeader'
 
 export default function Home() {
   const router = useRouter()
@@ -31,11 +32,15 @@ export default function Home() {
   }, [])
   return (
     // <div className='text-center'>กำลัง login.......</div>
-    <div className='container' style={{ marginTop: 20 }}>
-      <LoadingSkeleton />
-      <LoadingSkeleton />
-      <LoadingSkeleton />
-    </div>
+    <>
+      <NavHeader />
+      <div className='container' style={{ marginTop: 20 }}>
+        <LoadingSkeleton />
+        <LoadingSkeleton />
+        <LoadingSkeleton />
+      </div>
+    </>
+
 
   )
 }
