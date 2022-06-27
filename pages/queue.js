@@ -21,7 +21,8 @@ const Queue = (value) => {
   const [selectId, setSelectId] = useState(0)
   const [hn, setHn] = useState('')
   const [tname, setTname] = useState('')
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([])
 
   useEffect(() => {
 
@@ -40,7 +41,8 @@ const Queue = (value) => {
 
     }
     getData()
-  },[])
+    getDep()
+  }, [])
 
   const getCid = async (userId) => {
     try {
@@ -68,12 +70,26 @@ const Queue = (value) => {
     }
   }
 
+
+  const getDep = async (userId) => {
+    try {
+      let res = await axios.get(`${BASE_URL}/get-dep-all`, { headers: { "token": token } })
+      console.log(res.data)
+      if (res.data.length > 0) {
+        setData(res.data)
+
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const onDep = (value) => {
 
     if (selectId != 0) {
       router.push({
         pathname: '/queue-date',
-        query: { dep: selectId,profile : JSON.stringify(profile),tname : tname ,hn_:hn},
+        query: { dep: selectId, profile: JSON.stringify(profile), tname: tname, hn_: hn },
       })
     }
 
@@ -92,10 +108,10 @@ const Queue = (value) => {
     <div>
       <NavHeader />
 
-      <div style={{ paddingTop: '17%' }}>
+      <div className='container' style={{ paddingTop: '17%' }}>
 
         {/* Profile */}
-        <div style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 110, borderRadius: 15 }}>
+        <div style={{ backgroundColor: 'white', height: 110, borderRadius: 15 }}>
           <div className='row' style={{ paddingTop: 15, paddingLeft: 10 }}>
             <div className='col-4'>
               <img src={Object.keys(profile).length == 0 ? './images/user.gif' : profile.pictureUrl} width={80} height={80} style={{ borderRadius: '50%' }} />
@@ -113,56 +129,27 @@ const Queue = (value) => {
         </div>
         {/* Profile */}
 
-        <h6 style={{ color: 'black', paddingTop: 25, paddingLeft: 20, paddingRight: 15 }}>เลือกแผนกจองคิว</h6>
+        <h6 style={{ color: 'black', paddingTop: 25 }}>เลือกแผนกจองคิว</h6>
 
-        { isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> : 
+        {isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> :
 
-        <div className='row' style={{ paddingTop: 5, paddingLeft: 15, paddingRight: 15 }}>
 
-          <div className='col-6'>
-            <div onClick={() => onSelect(1)} className='text-center' style={{ backgroundColor: 'white', marginLeft: 0, marginRight: 5, height: 100, borderRadius: 15, borderColor: selectId == 1 ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}>
-              {/* <div className='row'> */}
-              <img src={'./images/hos.gif'} width={40} height={40} style={{ marginTop: 10 }} />
-              <p style={{ paddingTop: 0, fontSize: 16 }}>จักษุวิทยา</p>
-              {/* </div> */}
-            </div>
-          </div>
-          <div className='col-6'>
-            <div onClick={() => onSelect(2)} className='text-center' style={{ backgroundColor: 'white', marginLeft: 0, marginRight: 5, height: 100, borderRadius: 15, borderColor: selectId == 2 ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}>
-              {/* <div className='row'> */}
-              <img src={'./images/hos.gif'} width={40} height={40} style={{ marginTop: 10 }} />
-              <p style={{ paddingTop: 0, fontSize: 16 }}>โสต ศอ นาสิก</p>
-              {/* </div> */}
-            </div>
-          </div>
-          <div className='col-6' style={{ marginTop: 15 }}>
-            <div onClick={() => onSelect(3)} className='text-center' style={{ backgroundColor: 'white', marginLeft: 0, marginRight: 5, height: 100, borderRadius: 15, borderColor: selectId == 3 ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}>
-              {/* <div className='row'> */}
-              <img src={'./images/hos.gif'} width={40} height={40} style={{ marginTop: 10 }} />
-              <p style={{ paddingTop: 0, fontSize: 16 }}>ศัลยกรรม</p>
-              {/* </div> */}
-            </div>
-          </div>
-          <div className='col-6' style={{ marginTop: 15 }}>
-            <div onClick={() => onSelect(4)} className='text-center' style={{ backgroundColor: 'white', marginLeft: 0, marginRight: 5, height: 100, borderRadius: 15, borderColor: selectId == 4 ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}>
-              {/* <div className='row'> */}
-              <img src={'./images/hos.gif'} width={40} height={40} style={{ marginTop: 10 }} />
-              <p style={{ paddingTop: 0, fontSize: 16 }}>ออร์โธปิดิกส์</p>
-              {/* </div> */}
-            </div>
-          </div>
-          <div className='col-6' style={{ marginTop: 15 }}>
-            <div onClick={() => onSelect(5)} className='text-center' style={{ backgroundColor: 'white', marginLeft: 0, marginRight: 5, height: 100, borderRadius: 15, borderColor: selectId == 5 ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}>
-              {/* <div className='row'> */}
-              <img src={'./images/hos.gif'} width={40} height={40} style={{ marginTop: 10 }} />
-              <p style={{ paddingTop: 0, fontSize: 16 }}>สูตินรีเวช</p>
-              {/* </div> */}
-            </div>
+          <div className='row' >
+
+            {data.map((item,i) => {
+              return <div className='col-6 mt-2'  >
+                <div onClick={() => onSelect(item.id)} className='text-center' style={{ backgroundColor: 'white', height: 100, borderRadius: 15, borderColor: selectId == item.id ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}>
+                  {/* <div className='row'> */}
+                  <img src={'./images/hos.gif'} width={40} height={40} style={{ marginTop: 10 }} />
+                  <p style={{ paddingTop: 0, fontSize: 16 }}>{item.name}</p>
+                  {/* </div> */}
+                </div>
+              </div>
+            })}
+
           </div>
 
-
-
-        </div>  }
+        }
         {/* <div className="card green" style={{ marginTop: 50 }} onClick={() => onDep(1)}>
           <h1>แพทย์แผนไทย</h1>
         </div>
@@ -170,12 +157,12 @@ const Queue = (value) => {
           <h1>ทันตกรรม</h1>
         </div> */}
       </div>
-      {isLoading ? '' : 
-      <div style={{ marginTop: 30, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
-        <Button type={selectId != 0 ? "primary" : "default"} shape="round" block size={'large'} onClick={onDep} >
-          ตกลง
-        </Button>
-      </div>  }
+      {isLoading ? '' :
+        <div style={{ marginTop: 30, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
+          <Button type={selectId != 0 ? "primary" : "default"} shape="round" block size={'large'} onClick={onDep} >
+            ตกลง
+          </Button>
+        </div>}
 
     </div>
   )
