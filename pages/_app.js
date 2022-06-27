@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
     const params = new URLSearchParams(queryString);
     const tkey = params.get('key');
-    console.log(tkey)
+    alert(tkey)
     localStorage.setItem('path',tkey)
 
     const fetchData = async () => {
