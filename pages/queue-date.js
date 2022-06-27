@@ -194,7 +194,7 @@ const QueueDate = () => {
             <Button type={"primary"} shape="round" block size={'large'} onClick={onNext} >
               ถัดไป
             </Button>
-            <a href="#" onclick={tclose}>Close Window</a>
+            <a href="#" onClick={tclose}>Close Window</a>
           </div>
 
         </div>
