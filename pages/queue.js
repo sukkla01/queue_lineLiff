@@ -30,6 +30,7 @@ const Queue = (value) => {
       const liff = (await import('@line/liff')).default
       await liff.ready
       const profile = await liff.getProfile()
+      console.log(profile)
       setProfile(profile)
       localStorage.setItem('name', profile.displayName);
       localStorage.setItem('userId', profile.userId);
