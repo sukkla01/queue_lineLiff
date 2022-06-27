@@ -34,7 +34,7 @@ const Register = () => {
             const profile = await liff.getProfile()
             setProfile(profile)
             getCid(profile.userId)
-            setIsLoading(false)
+           
 
         }
         getData()
@@ -45,7 +45,7 @@ const Register = () => {
     const getCid = async (userId) => {
         try {
             let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
-
+            setIsLoading(false)
             if (res.data.length > 0) {
                 router.push({
                     pathname: '/register-success',
