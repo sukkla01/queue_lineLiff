@@ -14,10 +14,10 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
     const params = new URLSearchParams(queryString);
-    const id = params.get('key');
-    alert(queryString)
-    alert(params)
-    alert(id)
+    const key = params.get('key');
+    // alert(queryString)
+    // alert(params)
+    // alert(id)
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }) {
         let path = localStorage.getItem('path')
 
         //xxxxx
-        // liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${path}` })
+        liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${key}` })
 
 
 
