@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }) {
     const key = params.get('key');
     // alert(queryString)
     // alert(params)
-    alert(key)
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
@@ -32,14 +31,9 @@ function MyApp({ Component, pageProps }) {
 
       if (!liff.isLoggedIn()) {
         let path = localStorage.getItem('path')
-
-        //xxxxx
-        alert('not')
-        // liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${key}` })
+         liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${key}` })
 
       }else{
-        alert('success')
-
         router.push({
           pathname: `/${key}`,
         })
