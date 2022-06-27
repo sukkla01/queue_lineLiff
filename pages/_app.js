@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
-      alert( router.query)
+      alert( JSON.stringify(router.query))
 
       try {
         await liff.init({ liffId })
