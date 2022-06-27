@@ -9,6 +9,12 @@ function MyApp({ Component, pageProps }) {
 
 
   useEffect(() => {
+
+    const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
+    const params = new URLSearchParams(queryString);
+    const tkey = params.get('key');
+    localStorage.setItem('path',tkey)
+
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
@@ -20,17 +26,17 @@ function MyApp({ Component, pageProps }) {
       }
 
       if (!liff.isLoggedIn()) {
-        let path  = localStorage.getItem('path')
-           
+       
+
         //xxxxx
-        liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${path}` })
-        
-        
+        liff.login({ redirectUri: `https://queue-ss.diligentsoftinter.com/${tkey}` })
+
+
       }
     }
     fetchData()
   }, [])
-  
+
   return <Component {...pageProps} />
 }
 
