@@ -33,8 +33,10 @@ function MyApp({ Component, pageProps }) {
       if (!liff.isLoggedIn()) {
         let path = localStorage.getItem('path')
         await liff.login({ redirectUri: `https://queue-ss.diligentsoftinter.com/register-success` })
+        alert('c')
 
       } else {
+        alert(key)
         router.push({
           pathname: `/${key}`,
         })
