@@ -59,6 +59,7 @@ const QueueDate = () => {
     try {
       let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
       setCountSlot(res.data.length)
+      console.log(res.data.length)
 
     } catch (error) {
       console.log(error)
@@ -127,11 +128,11 @@ const QueueDate = () => {
 
   const onNext = (value) => {
 
-    let path = countSlot > 1 ? '/queue-time' : '/queue-success'
+    let path = countSlot > 0 ? '/queue-time' : '/queue-success'
     if (IsNext) {
       router.push({
         pathname: path,
-        query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn },
+        query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn,time:'' },
       })
     }
 

@@ -18,7 +18,7 @@ const token = config.token
 const QueueSuccess = () => {
     const router = useRouter()
     const [selectId, setSelectId] = useState(0)
-    const { date,dep,profile,tname,hn_ } = router.query
+    const { date,dep,profile,tname,hn_,time } = router.query
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
@@ -66,7 +66,8 @@ const QueueSuccess = () => {
             hn: hn,
             nextdate: date,
             dep: dep,
-            userId : userId
+            userId : userId,
+            ttime : time
         }
         try {
             let res = await axios.post(`${BASE_URL}/add-reserve`, data, { headers: { "token": token } })

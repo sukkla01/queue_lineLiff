@@ -3,18 +3,23 @@ import NavHeader from '../component/NavHeader'
 import ProfilePage from '../component/ProfilePage'
 import { Button } from 'antd';
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import config from '../config'
 
+const BASE_URL = config.BASE_URL
 
+const token = config.token
 const QueueTime = () => {
     const router = useRouter()
     const [selectId, setSelectId] = useState(0)
-    const { dep, date } = router.query
+    const { dep, date,profile, tname, hn_ } = router.query
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
 
+    const [data, setData] = useState([]);
 
-    let data = ['17:00', '18:00']
+    // let data = ['17:00', '18:00']
 
 
     useEffect(() => {
@@ -23,7 +28,20 @@ const QueueTime = () => {
         setName(localStorage.getItem('name'))
         setUserId(localStorage.getItem('userId'))
         setPicture(localStorage.getItem('picture'))
+        getSlot()
     },[])
+
+    const getSlot = async () => {
+        try {
+          let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
+          setData(res.data)
+          console.log(res.data)
+    
+        } catch (error) {
+          console.log(error)
+        }
+    
+      }
 
     const onSelect = (value) => {
         setSelectId(value)
@@ -32,8 +50,8 @@ const QueueTime = () => {
     const onNext = (value) => {
 
         router.push({
-            pathname: '/queue-time',
-            query: { dep: dep, date: dateShow },
+            pathname: '/queue-success',
+            query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn_,time : selectId },
         })
 
 
@@ -43,7 +61,7 @@ const QueueTime = () => {
 
         router.push({
             pathname: '/queue-date',
-            query: { dep: dep },
+            query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn_ },
         })
 
 
@@ -78,11 +96,11 @@ const QueueTime = () => {
                 <div className='row'>
                     {data.map((item, i) => {
                         console.log(item)
-                        return <div className='col-4' key={i} >
-                            <div className='text-center' style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 30, width: 100, borderRadius: 15, marginTop: 15, borderColor: selectId == item ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}
-                                onClick={() => onSelect(item)}
+                        return <div className='col-3' key={i} >
+                            <div className='text-center' style={{ backgroundColor: 'white', marginLeft: 15, marginRight: 10, height: 30, width: 100, borderRadius: 15, marginTop: 15, borderColor: selectId == item.ttime ? '#00bfa5' : 'white', borderWidth: 1, borderStyle: 'solid' }}
+                                onClick={() => onSelect(item.ttime)}
                             >
-                                <p style={{ paddingTop: 5 }}>{item}</p>
+                                <p style={{ paddingTop: 5 }}>{item.ttime}</p>
                             </div>
 
                         </div>
