@@ -7,9 +7,14 @@ const liffId = process.env.NEXT_PUBLIC_LIFF_ID
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
+
+  const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
+  const params = new URLSearchParams(queryString);
+  const id = params.get('id');
   // const { param } = router.query
 
   useEffect(() => {
+    alert(id)
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
