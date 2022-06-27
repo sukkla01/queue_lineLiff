@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useEffect, useState } from 'react'
 import 'antd/dist/antd.css';
 import { useRouter } from 'next/router'
+import { NextResponse, NextRequest } from 'next/server'
 const liffId = process.env.NEXT_PUBLIC_LIFF_ID
 
 function MyApp({ Component, pageProps }) {
@@ -32,14 +33,13 @@ function MyApp({ Component, pageProps }) {
 
       if (!liff.isLoggedIn()) {
         let path = localStorage.getItem('path')
-        await liff.login({ redirectUri: `https://queue-ss.diligentsoftinter.com/register-success` })
+        await liff.login({ redirectUri: `https://queue-ss.diligentsoftinter.com?pathname=re/register-success` })
         alert('c')
 
       } else {
         alert(key)
-        router.push({
-          pathname: `/${key}`,
-        })
+        let tpath = `/${key}`
+        NextResponse.redirect(tpath)
       }
 
       setIsLoad(true)
