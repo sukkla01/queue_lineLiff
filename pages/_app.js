@@ -7,6 +7,7 @@ const liffId = process.env.NEXT_PUBLIC_LIFF_ID
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
+  const [isLoad, setIsLoad] = useState(false)
 
 
   // const { param } = router.query
@@ -39,11 +40,13 @@ function MyApp({ Component, pageProps }) {
         })
       }
 
+
+      setIsLoad(true)
     }
     fetchData()
   }, [])
 
-  return <Component {...pageProps} />
+  return  setIsLoad ?  <Component {...pageProps} /> : <></>
 }
 
 export default MyApp
