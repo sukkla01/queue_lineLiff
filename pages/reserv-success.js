@@ -10,9 +10,9 @@ const ReservSuccess = (props) => {
         e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
         // Chrome requires returnValue to be set
         e.returnValue = "";
-      };
+    };
 
-      const closeWindows = async () => {
+    const closeWindows = async () => {
         const liff = (await import('@line/liff')).default
         await liff.ready
         liff.closeWindow()
@@ -28,10 +28,11 @@ const ReservSuccess = (props) => {
                         </div>
                         <img src={'./images/shield.gif'} width={80} height={80} style={{ borderRadius: '50%', marginTop: 20 }} />
                     </div>
-                    <Button type="primary" shape="round" block size={'large'} onClick={closeWindows} >
-                        ปิด
-                    </Button>
+
                 </div>
+                <Button type="primary" shape="round" block size={'large'} onClick={closeWindows} style={{  marginTop: 10 }} >
+                    ปิด
+                </Button>
             </div>
         </div>
     )
