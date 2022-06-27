@@ -9,8 +9,9 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    alert('ddd')
+    
     let path = localStorage.getItem('path')
+    alert(path)
     router.push(`/${path}`)
 
 
