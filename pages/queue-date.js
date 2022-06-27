@@ -161,7 +161,7 @@ const QueueDate = () => {
 
         </div>
 
-        <h6 style={{ color: 'black', paddingTop: 15, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว  {'(' + data[0].name + ')'}</h6>
+        <h6 style={{ color: 'black', paddingTop: 15, paddingLeft: 20, paddingRight: 15 }}>เลือกวันที่จองคิว  {'(' + countSlot[0].name + ')'}</h6>
 
         <div className="site-calendar-demo-card" style={{ marginLeft: 15, marginRight: 10, borderRadius: 15 }}>
           <ConfigProvider locale={th_TH}>
