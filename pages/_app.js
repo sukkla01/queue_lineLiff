@@ -7,13 +7,13 @@ const liffId = process.env.NEXT_PUBLIC_LIFF_ID
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
-  const { param } = router.query
+  // const { param } = router.query
 
   useEffect(() => {
     const fetchData = async () => {
       const liff = (await import('@line/liff')).default
 
-      alert(param)
+      alert( router.query)
 
       try {
         await liff.init({ liffId })
