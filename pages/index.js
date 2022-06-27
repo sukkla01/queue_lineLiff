@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Avatar, List, Skeleton, Switch } from 'antd';
 import LoadingSkeleton from '../component/LoadingSkeleton'
 
@@ -31,6 +31,11 @@ export default function Home() {
   }, [])
   return (
     // <div className='text-center'>กำลัง login.......</div>
-    <LoadingSkeleton  />
+    <div className='container' style={{ marginTop: 20 }}>
+      <LoadingSkeleton />
+      <LoadingSkeleton />
+      <LoadingSkeleton />
+    </div>
+
   )
 }
