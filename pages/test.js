@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { Avatar, List, Skeleton, Switch } from 'antd';
 
 const Test = () => {
-    const [count, setCount] = useState(0)
-    const [profile, setProfile] = useState({})
-    useEffect(() => {
-        console.log('1234')
-        localStorage.setItem('path', 'test');
-        async function getData() {
-            const liff = (await import('@line/liff')).default
-            await liff.ready
-            const profile = await liff.getProfile()
-            setProfile(profile)
-        }
-
-        getData()
-    })
+    const [loading, setLoading] = useState(true);
 
     return (
-        <div>
-            {count == 1 ? <button onClick={() => setCount(count + 1)}>Click me</button> : ''}
-            <p>SubID : {profile.userId}</p>
-            {}
-            
-        </div>
+        <Skeleton loading={loading} active avatar>
+            <List.Item.Meta
+                avatar={<Avatar src={'https://joeschmoe.io/api/v1/random'} />}
+                title={<a href='#'>xxxxxxxx</a>}
+                description={'ddddd'}
+            />
+            xxxxxxxxxxxxxxx
+        </Skeleton>
     )
 }
 

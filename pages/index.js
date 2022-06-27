@@ -2,11 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
-import { Button } from 'antd'
+import React, { useEffect,useState } from 'react'
+import { Avatar, List, Skeleton, Switch } from 'antd';
 
 export default function Home() {
   const router = useRouter()
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
@@ -28,6 +29,14 @@ export default function Home() {
     // }
   }, [])
   return (
-    <div className='text-center'>กำลัง login.......</div>
+    // <div className='text-center'>กำลัง login.......</div>
+    <Skeleton loading={loading} active avatar>
+      <List.Item.Meta
+        avatar={<Avatar src={'https://joeschmoe.io/api/v1/random'} />}
+        title={<a href='#'>xxxxxxxx</a>}
+        description={'ddddd'}
+      />
+     xxxx
+    </Skeleton>
   )
 }
