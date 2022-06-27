@@ -39,7 +39,10 @@ function MyApp({ Component, pageProps }) {
 
       }else{
         alert('success')
-        window.redirectUri(`https://queue-ss.diligentsoftinter.com/${key}`)
+
+        router.push({
+          pathname: `/${key}`,
+        })
       }
 
     }
