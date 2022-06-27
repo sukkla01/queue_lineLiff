@@ -24,6 +24,7 @@ const QueueDate = () => {
   const [picture, setPicture] = useState('')
   const [hn, setHn] = useState('')
   const [IsNext, setIsNext] = useState(false)
+  const [countSlot, setCountSlot] = useState(0)
 
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const QueueDate = () => {
       setSDateShow('ไม่เปิดบริการ กรุณาเลือกวันอื่น')
     }
 
+    getSlot()
     // getData()
     // setName(localStorage.getItem('tname'))
     // setUserId(localStorage.getItem('userId'))
@@ -48,6 +50,18 @@ const QueueDate = () => {
     setHn(hn_)
 
   }, [])
+
+
+  const getSlot = async () => {
+    try {
+      let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
+      setCountSlot(res.data.length)
+
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 
   async function onPanelChange(value, mode) {
 
@@ -70,7 +84,7 @@ const QueueDate = () => {
             setSDateShow(moment(value).add(543, 'year').format('LL'))
             setDate(moment(value).format('YYYY-MM-DD'))
             setIsNext(true)
-          }else{
+          } else {
             setSDateShow('เต็มแล้ว')
             setIsNext(false)
           }
@@ -98,18 +112,27 @@ const QueueDate = () => {
   }
 
   const onNext = (value) => {
+
+    let path = countSlot > 1 ? '/queue-time' : '/queue-success'
     if (IsNext) {
       router.push({
-        pathname: '/queue-success',
+        pathname: path,
         query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn },
       })
-    }else{
-
-      console.log('gg')
     }
+
+
+
+
 
   }
 
+
+
+  const tclose=()=>{
+    window.open('','_parent','');
+    window.close();
+  }
 
 
 
@@ -171,7 +194,7 @@ const QueueDate = () => {
             <Button type={"primary"} shape="round" block size={'large'} onClick={onNext} >
               ถัดไป
             </Button>
-
+            <a href="#" onclick={tclose}>Close Window</a>
           </div>
 
         </div>

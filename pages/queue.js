@@ -38,7 +38,7 @@ const Queue = (value) => {
       getCid(profile.userId)
 
     }
-    getData()
+    // getData()
   },[])
 
   const getCid = async (userId) => {
