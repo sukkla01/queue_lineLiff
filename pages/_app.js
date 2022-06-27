@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import 'antd/dist/antd.css';
 import { useRouter } from 'next/router'
 const liffId = process.env.NEXT_PUBLIC_LIFF_ID
