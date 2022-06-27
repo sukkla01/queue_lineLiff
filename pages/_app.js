@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
     const params = new URLSearchParams(queryString);
-    const id = params.get('id');
+    const id = params.get('key');
     alert(queryString)
     alert(params)
     alert(id)
