@@ -54,7 +54,7 @@ const QueueDate = () => {
 
   }, [])
 
-
+  
   const getSlot = async () => {
     try {
       let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
