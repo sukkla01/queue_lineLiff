@@ -36,9 +36,10 @@ function MyApp({ Component, pageProps }) {
         //xxxxx
         liff.login({ redirectUri : `https://queue-ss.diligentsoftinter.com/${key}` })
 
-
-
+      }else{
+        window.redirectUri(`https://queue-ss.diligentsoftinter.com/${key}`)
       }
+
     }
     fetchData()
   }, [])
