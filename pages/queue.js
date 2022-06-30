@@ -21,7 +21,7 @@ const Queue = (value) => {
   const [selectId, setSelectId] = useState(0)
   const [hn, setHn] = useState('')
   const [tname, setTname] = useState('')
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([])
 
   useEffect(() => {

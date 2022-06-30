@@ -5,6 +5,8 @@ import { Button } from 'antd';
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import config from '../config'
+import { Alert } from 'antd';
+
 
 const BASE_URL = config.BASE_URL
 
@@ -12,12 +14,13 @@ const token = config.token
 const QueueTime = () => {
     const router = useRouter()
     const [selectId, setSelectId] = useState(0)
-    const { dep, date,profile, tname, hn_ } = router.query
+    const { dep, date, profile, tname, hn_ } = router.query
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
 
     const [data, setData] = useState([]);
+    const [isNext, setIsnext] = useState(false);
 
     // let data = ['17:00', '18:00']
 
@@ -29,31 +32,65 @@ const QueueTime = () => {
         setUserId(localStorage.getItem('userId'))
         setPicture(localStorage.getItem('picture'))
         getSlot()
-    },[])
+    }, [])
 
     const getSlot = async () => {
         try {
-          let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
-          setData(res.data)
-          console.log(res.data)
-    
-        } catch (error) {
-          console.log(error)
-        }
-    
-      }
+            let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
+            setData(res.data)
+            console.log(res.data)
 
-    const onSelect = (value) => {
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+    const getTimeLimit = async (ttime) => {
+        try {
+            let res = await axios.get(`${BASE_URL}/get-dep-slot-id-timelimit/${dep}/${ttime}`, { headers: { "token": token } })
+
+            return res.data[0].max_limit
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+    const getReserveCount = async (ttime) => {
+        try {
+            let res = await axios.get(`${BASE_URL}/get-dep-slot-id-reserve-count/${dep}/${date}/${ttime}`, { headers: { "token": token } })
+            console.log(res.data)
+            return res.data[0].tcount
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    const onSelect = async (value) => {
+        let TimeMax = await getTimeLimit(value)
+        let ReserveCount = await getReserveCount(value)
         setSelectId(value)
+        console.log(TimeMax)
+        console.log(ReserveCount)
+        if (parseInt(ReserveCount) >= parseInt(TimeMax)) {
+            setIsnext(true)
+        } else {
+            setIsnext(false)
+        }
     }
 
     const onNext = (value) => {
-
-        router.push({
-            pathname: '/queue-success',
-            query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn_,time : selectId },
-        })
-
+        if (selectId != '') {
+            if(!isNext){
+                router.push({
+                    pathname: '/queue-success',
+                    query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn_, time: selectId },
+                })
+            }
+        
+        }
 
     }
 
@@ -108,7 +145,15 @@ const QueueTime = () => {
 
                 </div>
 
-                <div className='row' style={{ marginTop: 50, marginLeft: 10, marginRight: 10, marginBottom: 100 }} >
+                <div style={{ marginTop: 25, marginLeft: 15, marginRight: 10 }}>
+                    <p style={{ fontSize: 20 }} className="text-center">
+                        {selectId != '' ?
+                            <Alert message={isNext ? 'เต็ม' : 'จองได้'} type={isNext ? "error" : "success"} showIcon />
+                            : ''}
+                    </p>
+                </div>
+
+                <div className='row' style={{ marginTop: 40, marginLeft: 10, marginRight: 10, marginBottom: 100 }} >
                     <div className='col-6'>
                         <Button type={"default"} shape="round" block size={'large'} onClick={onBack} >
                             กลับ

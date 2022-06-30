@@ -26,6 +26,7 @@ const QueueDate = () => {
   const [IsNext, setIsNext] = useState(false)
   const [countSlot, setCountSlot] = useState(0)
   const [DataDepName, setDataDepName] = useState('')
+  const [tday, setTday] = useState('')
 
 
   useEffect(() => {
@@ -54,12 +55,15 @@ const QueueDate = () => {
 
   }, [])
 
-  
+
   const getSlot = async () => {
     try {
-      let res = await axios.get(`${BASE_URL}/get-dep-slot-id/${dep}`, { headers: { "token": token } })
-      setCountSlot(res.data.length)
-      console.log(res.data.length)
+      let res = await axios.get(`${BASE_URL}/get-dep-slot-id-check/${dep}`, { headers: { "token": token } })
+
+      let tmp = res.data.length == 1 && res.data[0].ttime == null ? 0 : 2
+      setCountSlot(tmp)
+      setTday(res.data[0].tday)
+      console.log(res.data)
 
     } catch (error) {
       console.log(error)
@@ -81,17 +85,28 @@ const QueueDate = () => {
   async function onPanelChange(value, mode) {
 
     const d = new Date(value);
+    const now_ = new Date();
     let day = d.getDay();
     let nextdate = moment(value).format('YYYY-MM-DD')
 
-    if (day == 1 || day == 2) {
+    // date diff
+    let start = moment(value, "YYYY-MM-DD");
+    let end = moment(moment(now_).format('YYYY-MM-DD'), "YYYY-MM-DD");
 
-
+    let tmp = moment.duration(start.diff(end)).asDays();
+    
+    console.log(tmp)
+    // console.log(end)
+    // console.log(day)
+    if(tmp < 0 ) {
+      setSDateShow('ไม่สามารถจองย้อนหลังได้ กรุณาเลือกวันอื่น')
+      setIsNext(false)
+    } else if (parseInt(tday) == day) {
       try {
         let res = await axios.get(`${BASE_URL}/get-dep-limit/${nextdate}/${dep}`, { headers: { "token": token } })
         console.log(res.data)
         if (res.data.length == 0) {
-          setSDateShow(moment(value).add(543, 'year').format('LL'))
+          setSDateShow(moment(value).add(543, 'year').format('LL') + ' --- จองได้') 
           setDate(moment(value).format('YYYY-MM-DD'))
           setIsNext(true)
         } else {
@@ -109,8 +124,6 @@ const QueueDate = () => {
       } catch (error) {
         console.log(error)
       }
-
-
 
     } else {
       setSDateShow('ไม่เปิดบริการ กรุณาเลือกวันอื่น')
@@ -132,14 +145,9 @@ const QueueDate = () => {
     if (IsNext) {
       router.push({
         pathname: path,
-        query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn,time:'' },
+        query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn, time: '' },
       })
     }
-
-
-
-
-
   }
 
 
@@ -188,7 +196,7 @@ const QueueDate = () => {
 
         <div style={{ marginTop: 15, marginLeft: 15, marginRight: 10 }}>
           <p style={{ fontSize: 20 }} className="text-center">
-            <Alert message={dateShow} type={dateShow == 'ไม่เปิดบริการ กรุณาเลือกวันอื่น' || dateShow == 'เต็มแล้ว' ? "error" : "success"} showIcon />
+            <Alert message={dateShow} type={!IsNext ? "error" : "success"} showIcon />
           </p>
         </div>
 

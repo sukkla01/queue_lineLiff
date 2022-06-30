@@ -96,12 +96,21 @@ const QueueSuccess = () => {
     }
 
     const onBack = (value) => {
+        if(time == ''){
+            router.push({
+                pathname: '/queue-date',
+                query: { dep: dep, date: date,profile:profile,tname:tname,hn_:hn },
+            })
+    
+        }else{
+            router.push({
+                pathname: '/queue-time',
+                query: { dep: dep, date: date,profile:profile,tname:tname,hn_:hn },
+            })
+    
+        }
 
-        router.push({
-            pathname: '/queue-date',
-            query: { dep: dep, date: date,profile:profile,tname:tname,hn_:hn },
-        })
-
+       
 
     }
 
