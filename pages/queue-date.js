@@ -62,7 +62,7 @@ const QueueDate = () => {
 
       let tmp = res.data.length == 1 && res.data[0].ttime == null ? 0 : 2
       setCountSlot(tmp)
-      setTday(res.data[0].tday)
+      setTday(res.data[0].tday.split(','))
       console.log(res.data)
 
     } catch (error) {
@@ -84,24 +84,26 @@ const QueueDate = () => {
 
   async function onPanelChange(value, mode) {
 
+    let a =['1', '2']
+
+    
+
     const d = new Date(value);
     const now_ = new Date();
     let day = d.getDay();
     let nextdate = moment(value).format('YYYY-MM-DD')
 
+    let daySelectCheck =tday.find(id => id === day.toString())
     // date diff
     let start = moment(value, "YYYY-MM-DD");
     let end = moment(moment(now_).format('YYYY-MM-DD'), "YYYY-MM-DD");
 
     let tmp = moment.duration(start.diff(end)).asDays();
     
-    console.log(tmp)
-    // console.log(end)
-    // console.log(day)
     if(tmp < 0 ) {
       setSDateShow('ไม่สามารถจองย้อนหลังได้ กรุณาเลือกวันอื่น')
       setIsNext(false)
-    } else if (parseInt(tday) == day) {
+    } else if (daySelectCheck > 0) {
       try {
         let res = await axios.get(`${BASE_URL}/get-dep-limit/${nextdate}/${dep}`, { headers: { "token": token } })
         console.log(res.data)
