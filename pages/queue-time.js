@@ -28,10 +28,18 @@ const QueueTime = () => {
     useEffect(() => {
 
         // getData()
-        setName(localStorage.getItem('name'))
-        setUserId(localStorage.getItem('userId'))
-        setPicture(localStorage.getItem('picture'))
+        // setName(localStorage.getItem('name'))
+        // setUserId(localStorage.getItem('userId'))
+        // setPicture(localStorage.getItem('picture'))
+        setName(tname)
+        setUserId(JSON.parse(profile).userId)
+        setPicture(JSON.parse(profile).pictureUrl)
+        setHn(hn_)
         getSlot()
+
+        
+
+
     }, [])
 
     const getSlot = async () => {
@@ -83,13 +91,13 @@ const QueueTime = () => {
 
     const onNext = (value) => {
         if (selectId != '') {
-            if(!isNext){
+            if (!isNext) {
                 router.push({
                     pathname: '/queue-success',
                     query: { dep: dep, date: date, profile: profile, tname: tname, hn_: hn_, time: selectId },
                 })
             }
-        
+
         }
 
     }
@@ -117,10 +125,10 @@ const QueueTime = () => {
                         </div>
                         <div className='col-8'>
                             <div className='row' style={{ fontSize: 15 }}>
-                                ชื่อ - สกุล : {name}
+                                ชื่อ-สกุล : {name}
                             </div>
-                            <div className='row' style={{ fontSize: 15, paddingTop: 20 }}>
-                                HN :
+                            <div className='row' style={{ fontSize: 15, paddingTop: 10 }}>
+                                HN : {hn}
                             </div>
                         </div>
                     </div>
