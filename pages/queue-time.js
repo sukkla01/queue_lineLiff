@@ -18,7 +18,7 @@ const QueueTime = () => {
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [picture, setPicture] = useState('')
-
+    const [hn, setHn] = useState('')
     const [data, setData] = useState([]);
     const [isNext, setIsnext] = useState(false);
 
