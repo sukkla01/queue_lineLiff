@@ -37,20 +37,28 @@ const Queue = (value) => {
       localStorage.setItem('userId', profile.userId);
       localStorage.setItem('picture', profile.pictureUrl);
 
-      getCid(profile.userId)
+      getCid(profile.userId,profile.pictureUrl)
 
     }
     getData()
     getDep()
   }, [])
 
-  const getCid = async (userId) => {
+  const getCid = async (userId,pictureUrl) => {
     try {
       let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
       if (res.data.length > 0) {
         setHn(res.data[0].hn)
         setTname(res.data[0].tname)
         localStorage.setItem('tname', res.data[0].tname);
+
+        if(profile.pictureUrl != res.data[0].picture){
+            let data = {
+              picture : pictureUrl,
+              userId :userId
+            }
+           await axios.post(`${BASE_URL}/update-register-picture`,data, { headers: { "token": token } })
+        }
 
         setIsLoading(false)
 
