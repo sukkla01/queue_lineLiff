@@ -1,4 +1,5 @@
 import React from 'react'
+import NavHeader from '../component/NavHeader'
 
 const Problem = () => {
     return (
