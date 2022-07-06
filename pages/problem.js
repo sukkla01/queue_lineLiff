@@ -6,9 +6,9 @@ const Problem = () => {
         <div>
             <NavHeader />
 
-            <div style={{ paddingTop: '17%' }}>
+            <div style={{ paddingTop: '17%',textAlign:'center' }}>
 
-                problem
+                กำลังพัฒนา....
             </div>
         </div>
     )
