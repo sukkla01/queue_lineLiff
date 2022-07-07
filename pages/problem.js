@@ -46,7 +46,7 @@ const Problem = () => {
                             // setIsCode(false)
                             setFormData({ ...formData, detail: e.target.value })
                             setUAlertm('')
-                        }} value={formData.detail} rows={4} placeholder="กรอกข้อมูลปัญหาที่ต้องการแจ้ง" maxLength={6} />
+                        }} value={formData.detail} rows={4} placeholder="กรอกข้อมูลปัญหาที่ต้องการแจ้ง" />
                         <Input onChange={e => {
                             // setIsCode(false)
                             setFormData({ ...formData, tel: e.target.value })
