@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
     const params = new URLSearchParams(queryString);
-    const tkey = params.get('key');
+    let tkey = params.get('key');
     // alert(path)
     tkey  =  tkey == null ? '': tkey
     router.push(`/${tkey}`)
