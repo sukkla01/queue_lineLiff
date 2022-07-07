@@ -25,7 +25,7 @@ const Problem = () => {
             await liff.ready
             const profile = await liff.getProfile()
             setProfile(profile)
-            setFormData({...formData,user_id})
+            setFormData({...formData,user_id : profile.userId})
             setIsLoading(false)
 
         }
