@@ -24,7 +24,7 @@ const Problem = () => {
             const liff = (await import('@line/liff')).default
             await liff.ready
             const profile = await liff.getProfile()
-            setProfile(profile)
+            // setProfile(profile)
             setFormData({ ...formData, user_id : profile.userId })
             // setFormData({...formData,user_id : profile.userId})
             setIsLoading(false)
