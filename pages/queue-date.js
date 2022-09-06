@@ -181,7 +181,7 @@ const QueueDate = () => {
         {/* Profile */}
 
         <div style={{ marginTop: 10, marginLeft: 15, marginRight: 10 }}>
-          <Alert message="เปิดบริการเฉพาะวัน จันทร์-อังคาร เวลา 17.00-19.00 น." type="info" showIcon />
+          <Alert message="เปิดบริการเฉพาะเวลา 17.00-19.00 น." type="info" showIcon />
 
         </div>
 
