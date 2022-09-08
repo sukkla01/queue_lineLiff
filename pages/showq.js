@@ -12,7 +12,7 @@ const Showq = () => {
     const router = useRouter()
     const [profile, setProfile] = useState({})
     const [data, setData] = useState([])
-    const [hn, setHn] = useState('0120257')
+    const [hn, setHn] = useState('')
     const [q_current, setQcurrent] = useState('')
     const [tname, setTname] = useState('')
     const [ctime, setCtime] = useState('')
@@ -72,6 +72,7 @@ const Showq = () => {
 
 
     const getQueueName = async (hn) => {
+        alert(hn)
         let regExp = /[^A-Z]/g;
         try {
             let res = await axios.get(`http://110.49.126.23:4001/get-queue-person/${hn}`)
