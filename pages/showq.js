@@ -47,27 +47,28 @@ const Showq = () => {
 
 
 
-    const getCid = async (userId,pictureUrl) => {
+    const getCid = async (userId, pictureUrl) => {
         try {
-          let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
-          if (res.data.length > 0) {
-            setHn(res.data[0].hn)
-            getQueueName(res.data[0].hn)
-          } else {
-    
-            router.push({
-              pathname: '/register',
-              query: { userId: userId },
-            })
-          }
-    
-    
-    
-    
+            let res = await axios.get(`${BASE_URL}/get-register-cid/${userId}`, { headers: { "token": token } })
+            if (res.data.length > 0) {
+                setHn(res.data[0].hn)
+                setTname(res.data[0].tname)
+                getQueueName(res.data[0].hn)
+            } else {
+
+                router.push({
+                    pathname: '/register',
+                    query: { userId: userId },
+                })
+            }
+
+
+
+
         } catch (error) {
-          console.log(error)
+            console.log(error)
         }
-      }
+    }
 
 
     const getQueueName = async (hn) => {
@@ -75,23 +76,23 @@ const Showq = () => {
         try {
             let res = await axios.get(`http://110.49.126.23:4001/get-queue-person/${hn}`)
             let tmp1 = res.data[0].current_queue.toUpperCase().replace(regExp, '')
-            let tmp_current = parseInt(res.data[0].current_queue.replace(tmp1,''))
+            let tmp_current = parseInt(res.data[0].current_queue.replace(tmp1, ''))
             let tmp2 = res.data[0].queue_slot_number.toUpperCase().replace(regExp, '')
-            let tmp_slot = parseInt(res.data[0].queue_slot_number.replace(tmp2,''))
+            let tmp_slot = parseInt(res.data[0].queue_slot_number.replace(tmp2, ''))
 
-            let minute_ = ( tmp_slot - tmp_current) * 5
+            let minute_ = (tmp_slot - tmp_current) * 5
             // console.log(tmp_current)
             console.log(minute_)
             setData(res.data)
 
             // console.log(res.data[0].current_queue)
             // console.log(q_current)
-            if(res.data[0].current_queue == q_current){
+            if (res.data[0].current_queue == q_current) {
                 // setNextTime
                 console.log('s')
                 // setNextTime(moment().add(20, 'minutes').format('HH:mm:ss'))
-            }else{
-                tmp_slot < tmp_current  ? '' :  setNextTime(moment().add(minute_, 'minutes').format('HH:mm:ss'))
+            } else {
+                tmp_slot < tmp_current ? '' : setNextTime(moment().add(minute_, 'minutes').format('HH:mm:ss'))
             }
             setQcurrent(res.data[0].current_queue)
             setCtime(moment().format('HH:mm:ss'))
@@ -118,10 +119,10 @@ const Showq = () => {
                         </div>
                         <div className='col-8'>
                             <div className='row' style={{ fontSize: 15 }}>
-                                ชื่อ-สกุล : {tname} 
+                                ชื่อ-สกุล : {tname}
                             </div>
                             <div className='row' style={{ fontSize: 15, paddingTop: 10 }}>
-                                HN : {hn} 
+                                HN : {hn}
                             </div>
                         </div>
                     </div>
@@ -137,7 +138,7 @@ const Showq = () => {
                         <div style={{ fontSize: 12, paddingTop: 5 }}><i className="fa fa-refresh" style={{ fontSize: 14, paddingRight: 5 }} onClick={() => getQueueName(hn)}></i> ข้อมูล ณ : {ctime} น.</div>
 
                         <div style={{ fontSize: 16, paddingTop: 50 }}>เวลาประมาณถึงคิวของคุณ</div>
-                        <div style={{ fontSize: 16, paddingTop: 5 }}>{ next_time } น.</div>
+                        <div style={{ fontSize: 16, paddingTop: 5 }}>{next_time} น.</div>
                         <div style={{ fontSize: 16, paddingTop: 5 }}>** กรุณามารอก่อน 20 นาที **</div>
 
                     </div>
