@@ -85,7 +85,7 @@ const Showq = () => {
             // console.log(tmp_current)
             
             setData(res.data)
-            alert(res.data)
+            // alert(res.data)
             // console.log(res.data[0].current_queue)
             // console.log(q_current)
             if (res.data[0].current_queue == q_current) {
