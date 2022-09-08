@@ -71,11 +71,11 @@ const Showq = () => {
     }
 
 
-    const getQueueName = async (hn) => {
+    const getQueueName = async (hn_) => {
         
         let regExp = /[^A-Z]/g;
         try {
-            let res = await axios.get(`http://110.49.126.23:4001/get-queue-person/${hn}`)
+            let res = await axios.get(`http://110.49.126.23:4001/get-queue-person/${hn_}`)
             let tmp1 = res.data[0].current_queue.toUpperCase().replace(regExp, '')
             let tmp_current = parseInt(res.data[0].current_queue.replace(tmp1, ''))
             let tmp2 = res.data[0].queue_slot_number.toUpperCase().replace(regExp, '')
@@ -93,14 +93,14 @@ const Showq = () => {
                 console.log('s')
                 // setNextTime(moment().add(20, 'minutes').format('HH:mm:ss'))
             } else {
-                tmp_slot < tmp_current ? '' : setNextTime(moment().add(minute_, 'minutes').format('HH:mm:ss'))
+                setNextTime(moment().add(minute_, 'minutes').format('HH:mm:ss'))
             }
             setQcurrent(res.data[0].current_queue)
             setCtime(moment().format('HH:mm:ss'))
 
 
         } catch (error) {
-            console.log(error)
+           alert(error)
         }
     }
 
