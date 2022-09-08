@@ -72,7 +72,7 @@ const Showq = () => {
 
 
     const getQueueName = async (hn) => {
-        alert(hn)
+        
         let regExp = /[^A-Z]/g;
         try {
             let res = await axios.get(`http://110.49.126.23:4001/get-queue-person/${hn}`)
@@ -83,9 +83,9 @@ const Showq = () => {
 
             let minute_ = (tmp_slot - tmp_current) * 5
             // console.log(tmp_current)
-            console.log(minute_)
+            
             setData(res.data)
-
+            alert(res.data)
             // console.log(res.data[0].current_queue)
             // console.log(q_current)
             if (res.data[0].current_queue == q_current) {
