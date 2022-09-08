@@ -75,7 +75,7 @@ const Showq = () => {
         
         let regExp = /[^A-Z]/g;
         try {
-            let res = await axios.get(`http://110.49.126.23:4001/get-queue-person/${hn_}`)
+            let res = await axios.get(`https://api-faststroke.diligentsoftinter.com/get-queue-person/${hn_}`)
             let tmp1 = res.data[0].current_queue.toUpperCase().replace(regExp, '')
             let tmp_current = parseInt(res.data[0].current_queue.replace(tmp1, ''))
             let tmp2 = res.data[0].queue_slot_number.toUpperCase().replace(regExp, '')
