@@ -5,6 +5,7 @@ import axios from 'axios'
 import config from '../config'
 import moment from 'moment';
 import ReactLoading from 'react-loading';
+import styled from "tachyons-components";
 
 const BASE_URL = config.BASE_URL
 const token = config.token
