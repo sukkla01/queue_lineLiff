@@ -17,6 +17,8 @@ const Showq = () => {
     const [tname, setTname] = useState('')
     const [ctime, setCtime] = useState('')
     const [next_time, setNextTime] = useState('')
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
 
         localStorage.setItem('path', 'queue');
@@ -54,6 +56,8 @@ const Showq = () => {
                 setHn(res.data[0].hn)
                 setTname(res.data[0].tname)
                 getQueueName(res.data[0].hn)
+                setIsLoading(false)
+
             } else {
 
                 router.push({
@@ -139,22 +143,22 @@ const Showq = () => {
                 </div>
 
 
+                {isLoading ? <div className='text-center'> <Section><ReactLoading type='bubbles' color='#AAAAAA' height={'20%'} width={'20%'} /></Section></div> :
+                    data.map((item, i) => {
+                        return <div style={{ backgroundColor: 'white', height: 330, border: 2, borderRadius: 15, marginTop: 10, textAlign: 'center' }} key={i}>
+                            <div style={{ fontSize: 18, paddingTop: 10, fontWeight: 'bold' }}>{item.opd_qs_room_name}</div>
+                            <div style={{ fontSize: 16, paddingTop: 10 }}>คิวปัจจุบัน / คิวของคุณ</div>
+                            <div style={{ fontSize: 45, paddingTop: 5 }}> <span style={{ color: 'red' }}>{q_current}</span> / <span style={{ color: 'green' }}>{item.queue_slot_number}</span></div>
+                            <div style={{ fontSize: 12, paddingTop: 5 }}><i className="fa fa-refresh" style={{ fontSize: 14, paddingRight: 5 }} onClick={() => getQueueName(hn)}></i> ข้อมูล ณ : {ctime} น.</div>
 
-                {data.map((item, i) => {
-                    return <div style={{ backgroundColor: 'white', height: 330, border: 2, borderRadius: 15, marginTop: 10, textAlign: 'center' }} key={i}>
-                        <div style={{ fontSize: 18, paddingTop: 10, fontWeight: 'bold' }}>{item.opd_qs_room_name}</div>
-                        <div style={{ fontSize: 16, paddingTop: 10 }}>คิวปัจจุบัน / คิวของคุณ</div>
-                        <div style={{ fontSize: 45, paddingTop: 5 }}> <span style={{ color: 'red' }}>{q_current}</span> / <span style={{ color: 'green' }}>{item.queue_slot_number}</span></div>
-                        <div style={{ fontSize: 12, paddingTop: 5 }}><i className="fa fa-refresh" style={{ fontSize: 14, paddingRight: 5 }} onClick={() => getQueueName(hn)}></i> ข้อมูล ณ : {ctime} น.</div>
+                            <div style={{ fontSize: 16, paddingTop: 50 }}>เวลาประมาณถึงคิวของคุณ</div>
+                            <div style={{ fontSize: 16, paddingTop: 5 }}>{next_time} น.</div>
+                            <div style={{ fontSize: 16, paddingTop: 5 }}>** กรุณามารอก่อน 20 นาที **</div>
 
-                        <div style={{ fontSize: 16, paddingTop: 50 }}>เวลาประมาณถึงคิวของคุณ</div>
-                        <div style={{ fontSize: 16, paddingTop: 5 }}>{next_time} น.</div>
-                        <div style={{ fontSize: 16, paddingTop: 5 }}>** กรุณามารอก่อน 20 นาที **</div>
+                        </div>
+                    })}
 
-                    </div>
-                })}
-
-                {data.length == 0 ? <div className='text-center mt-5'>ไม่มีคิวในวันนี้ กรุณาติดต่อห้องบัตร</div> : ''}
+                {isLoading ? '' : data.length == 0 ? <div className='text-center mt-5'>ไม่มีคิวในวันนี้ กรุณาติดต่อห้องบัตร</div> : ''}
 
 
 
