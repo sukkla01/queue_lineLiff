@@ -9,6 +9,9 @@ import ReactLoading from 'react-loading';
 const BASE_URL = config.BASE_URL
 const token = config.token
 
+export const Section = styled('div')`
+flex flex-wrap content-center justify-center w-100 h-100`;
+
 const Showq = () => {
     const router = useRouter()
     const [profile, setProfile] = useState({})
