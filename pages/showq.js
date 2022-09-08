@@ -88,23 +88,24 @@ const Showq = () => {
                 tmp_slot = parseInt(res.data[0].queue_slot_number.replace(tmp2, ''))
 
                 minute_ = (tmp_slot - tmp_current) * 5
+                setData(res.data)
+                // alert(res.data)
+                // console.log(res.data[0].current_queue)
+                // console.log(q_current)
+                if (res.data[0].current_queue == q_current) {
+                    // setNextTime
+                    console.log('s')
+                    // setNextTime(moment().add(20, 'minutes').format('HH:mm:ss'))
+                } else {
+                    setNextTime(moment().add(minute_, 'minutes').format('HH:mm:ss'))
+                }
+                setQcurrent(res.data[0].current_queue)
+                setCtime(moment().format('HH:mm:ss'))
             }
 
             // console.log(tmp_current)
 
-            setData(res.data)
-            // alert(res.data)
-            // console.log(res.data[0].current_queue)
-            // console.log(q_current)
-            if (res.data[0].current_queue == q_current) {
-                // setNextTime
-                console.log('s')
-                // setNextTime(moment().add(20, 'minutes').format('HH:mm:ss'))
-            } else {
-                setNextTime(moment().add(minute_, 'minutes').format('HH:mm:ss'))
-            }
-            setQcurrent(res.data[0].current_queue)
-            setCtime(moment().format('HH:mm:ss'))
+
 
 
         } catch (error) {
