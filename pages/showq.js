@@ -72,18 +72,26 @@ const Showq = () => {
 
 
     const getQueueName = async (hn_) => {
-        
+        let tmp1
+        let tmp_current
+        let tmp2
+        let tmp_slot
+
+        let minute_ = 0
         let regExp = /[^A-Z]/g;
         try {
             let res = await axios.get(`https://api-faststroke.diligentsoftinter.com/get-queue-person/${hn_}`)
-            let tmp1 = res.data[0].current_queue.toUpperCase().replace(regExp, '')
-            let tmp_current = parseInt(res.data[0].current_queue.replace(tmp1, ''))
-            let tmp2 = res.data[0].queue_slot_number.toUpperCase().replace(regExp, '')
-            let tmp_slot = parseInt(res.data[0].queue_slot_number.replace(tmp2, ''))
+            if (res.data.length > 0) {
+                tmp1 = res.data[0].current_queue.toUpperCase().replace(regExp, '')
+                tmp_current = parseInt(res.data[0].current_queue.replace(tmp1, ''))
+                tmp2 = res.data[0].queue_slot_number.toUpperCase().replace(regExp, '')
+                tmp_slot = parseInt(res.data[0].queue_slot_number.replace(tmp2, ''))
 
-            let minute_ = (tmp_slot - tmp_current) * 5
+                minute_ = (tmp_slot - tmp_current) * 5
+            }
+
             // console.log(tmp_current)
-            
+
             setData(res.data)
             // alert(res.data)
             // console.log(res.data[0].current_queue)
@@ -100,7 +108,7 @@ const Showq = () => {
 
 
         } catch (error) {
-           alert(error)
+            alert(error)
         }
     }
 
@@ -144,6 +152,8 @@ const Showq = () => {
 
                     </div>
                 })}
+
+                {data.length == 0 ? <div className='text-center mt-5'>ไม่มีคิวในวันนี้ กรุณาติดต่อห้องบัตร</div> : ''}
 
 
 
