@@ -49,7 +49,7 @@ const RegisterSuccess = () => {
     return (
         <div style={{ textAlign: "center" }}>
             <NavHeader />
-            {data.length == 0 ?
+            {data.length > 0 ?
                 <div style={{ paddingTop: '20%' }}>
                     <div style={{ backgroundColor: 'white', marginLeft: 10, marginRight: 10, height: 500, borderRadius: 15 }}>
                         <p></p>
