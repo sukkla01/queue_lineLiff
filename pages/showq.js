@@ -45,7 +45,7 @@ const Showq = () => {
 
 
         const interval = setInterval(() => {
-            console.log('This will run every second!');
+            alert(hn)
             getQueueName(hn)
         }, 180000);
         return () => clearInterval(interval);
