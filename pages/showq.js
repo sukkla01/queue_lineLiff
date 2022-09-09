@@ -81,9 +81,9 @@ const Showq = () => {
 
     const getQueueName = async (hn_) => {
         let tmp_hn = hn_ == '' ? hn : hn_
-        alert('hn = ' + hn)
-        alert('hn_ = ' + hn_)
-        alert('tmp_hn = ' + tmp_hn)
+        // alert('hn = ' + hn)
+        // alert('hn_ = ' + hn_)
+        // alert('tmp_hn = ' + tmp_hn)
 
         let tmp1
         let tmp_current
