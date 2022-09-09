@@ -44,10 +44,10 @@ const Showq = () => {
         getData()
 
 
-        const interval = setInterval(() => {
-            getQueueName(hn)
-        }, 180000);
-        return () => clearInterval(interval);
+        // const interval = setInterval(() => {
+        //     getQueueName(hn)
+        // }, 180000);
+        // return () => clearInterval(interval);
 
     }, [])
 
@@ -61,6 +61,11 @@ const Showq = () => {
                 setTname(res.data[0].tname)
                 getQueueName(res.data[0].hn)
                 setIsLoading(false)
+
+                const interval = setInterval(() => {
+                    getQueueName(hn)
+                }, 3000);
+                return () => clearInterval(interval);
 
             } else {
 
