@@ -64,7 +64,7 @@ const Showq = () => {
 
                 const interval = setInterval(() => {
                     getQueueName(res.data[0].hn)
-                }, 5000);
+                }, 180000);
                 return () => clearInterval(interval);
 
             } else {
