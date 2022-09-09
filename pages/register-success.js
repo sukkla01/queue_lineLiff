@@ -29,7 +29,19 @@ const RegisterSuccess = () => {
         }
     }
 
-
+    const onLogout = async()=>{
+        let post ={
+            cid : data[0].cid
+        }
+        try {
+            let res = await axios.post(`${BASE_URL}/del-register`, post,{ headers: { "token": token } })
+            router.push({
+                pathname: '/register'
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div style={{ textAlign: "center" }}>
             <NavHeader />
@@ -46,7 +58,11 @@ const RegisterSuccess = () => {
                             <QRCode value={data[0].hn}  size ={120}/>
                         </div>
 
-
+                        <div style={{ marginTop: 30, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
+                            <Button type= "danger"  shape="round" block size={'large'} onClick={onLogout} >
+                                ตกลง
+                            </Button>
+                        </div>
 
                     </div>
                 </div> : ''}
