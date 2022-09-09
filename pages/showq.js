@@ -45,7 +45,6 @@ const Showq = () => {
 
 
         const interval = setInterval(() => {
-            alert(hn)
             getQueueName(hn)
         }, 180000);
         return () => clearInterval(interval);
@@ -81,6 +80,11 @@ const Showq = () => {
 
 
     const getQueueName = async (hn_) => {
+        let tmp_hn = hn_ == '' ? hn : hn_
+        alert('hn = ' + hn)
+        alert('hn_ = ' + hn_)
+        alert('tmp_hn = ' + tmp_hn)
+
         let tmp1
         let tmp_current
         let tmp2
@@ -89,7 +93,7 @@ const Showq = () => {
         let minute_ = 0
         let regExp = /[^A-Z]/g;
         try {
-            let res = await axios.get(`https://api-faststroke.diligentsoftinter.com/get-queue-person/${hn_}`)
+            let res = await axios.get(`https://api-faststroke.diligentsoftinter.com/get-queue-person/${tmp_hn}`)
             if (res.data.length > 0) {
                 tmp1 = res.data[0].current_queue.toUpperCase().replace(regExp, '')
                 tmp_current = parseInt(res.data[0].current_queue.replace(tmp1, ''))
