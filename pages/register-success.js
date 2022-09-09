@@ -61,7 +61,7 @@ const RegisterSuccess = () => {
 
                         <div style={{ marginTop: 30, marginLeft: 20, marginRight: 20, marginBottom: 100 }} >
                             <Button type= "danger"  shape="round" block size={'large'} onClick={onLogout} >
-                                ตกลง
+                                ยกเลิกการลงทะเบียน
                             </Button>
                         </div>
 
