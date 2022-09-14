@@ -162,7 +162,7 @@ const Showq = () => {
                         return <div style={{ backgroundColor: 'white', height: 330, border: 2, borderRadius: 15, marginTop: 10, textAlign: 'center' }} key={i}>
                             <div style={{ fontSize: 18, paddingTop: 10, fontWeight: 'bold' }}>{item.opd_qs_room_name}</div>
                             <div style={{ fontSize: 16, paddingTop: 10 }}>คิวปัจจุบัน / คิวของคุณ</div>
-                            <div style={{ fontSize: 45, paddingTop: 5 }}> <span style={{ color: 'red' }}>{q_current}</span> / <span style={{ color: 'green' }}>{item.queue_slot_number}</span></div>
+                            <div style={{ fontSize: 45, paddingTop: 5 }}> <span style={{ color: 'red' }}>{item.current_queue}</span> / <span style={{ color: 'green' }}>{item.queue_slot_number}</span></div>
                             <div style={{ fontSize: 12, paddingTop: 5 }}><i className="fa fa-refresh" style={{ fontSize: 14, paddingRight: 5 }} onClick={() => getQueueName(hn)}></i> ข้อมูล ณ : {ctime} น.</div>
 
                             <div style={{ fontSize: 16, paddingTop: 50 }}>เวลาประมาณถึงคิวของคุณ</div>
