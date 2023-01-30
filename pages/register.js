@@ -38,7 +38,8 @@ const Register = () => {
 
 
         }
-        getData()
+        getCid('Udc7df04558553d76459605ee4767921b','')
+        // getData()
     }, [])
 
 
