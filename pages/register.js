@@ -21,7 +21,7 @@ const Register = () => {
     const [profile, setProfile] = useState({})
     const [alertM, setUAlertm] = useState("");
     const [status, setStatus] = useState("N");
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState(
         {
             cid: '',
