@@ -21,7 +21,7 @@ const Register = () => {
     const [profile, setProfile] = useState({})
     const [alertM, setUAlertm] = useState("");
     const [status, setStatus] = useState("N");
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [formData, setFormData] = useState(
         {
             cid: '',
@@ -38,8 +38,7 @@ const Register = () => {
 
 
         }
-        getCid('Udc7df04558553d76459605ee4767921b','')
-        // getData()
+        getData()
     }, [])
 
 
