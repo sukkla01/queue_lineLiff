@@ -40,6 +40,7 @@ const Queue = (value) => {
       getCid(profile.userId,profile.pictureUrl)
 
     }
+    // getCid('Udc7df04558553d76459605ee4767921b','')
     getData()
     getDep()
   }, [])
