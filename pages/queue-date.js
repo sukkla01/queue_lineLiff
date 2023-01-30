@@ -96,7 +96,7 @@ const QueueDate = () => {
     if (tmp < 0) {
       setSDateShow("ไม่สามารถจองย้อนหลังได้ กรุณาเลือกวันอื่น");
       setIsNext(false);
-    } else if (nextdate == "2022-11-28" && dep == "5") {
+    } else if (nextdate == "2023-02-20" && dep == "7") {
       setIsNext(false);
       setSDateShow("ไม่เปิดบริการ");
     } else if (nextdate == "2022-11-22" && dep == "1") {
